@@ -40,3 +40,24 @@
     margin-top: 1px;
     margin-bottom: 5px
 }
+
+@media only screen and (max-width: 1000px) {
+    .commentSection{
+        width: 70%;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .commentSection{
+        width: 80%;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .commentSection{
+        width: 90%;
+    }
+}
+
+
+
