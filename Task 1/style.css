@@ -1,4 +1,4 @@
-.commentSection{
+.mainDiv{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -7,8 +7,12 @@
     margin: auto;
 }
 
-.commentSection_image{
+.mainDiv_image{
     height: 400px;
+    width: 100%;
+}
+
+.commentSection{
     width: 100%;
 }
 
@@ -41,20 +45,25 @@
     margin-bottom: 5px
 }
 
+.nestedComment{
+    margin-left: 10%;
+    width: auto;
+}
+
 @media only screen and (max-width: 1000px) {
-    .commentSection{
+    .mainDiv{
         width: 70%;
     }
 }
 
 @media only screen and (max-width: 800px) {
-    .commentSection{
+    .mainDiv{
         width: 80%;
     }
 }
 
 @media only screen and (max-width: 600px) {
-    .commentSection{
+    .mainDiv{
         width: 90%;
     }
 }
