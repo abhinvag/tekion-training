@@ -1,0 +1,42 @@
+.commentSection{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    margin: auto;
+}
+
+.commentSection_image{
+    height: 400px;
+    width: 100%;
+}
+
+.commentSection_userCommentDiv{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.userCommentDiv_userImage{
+    border-radius: 100%;
+    width: 50px;
+    height: 50px;
+}
+
+.userCommentDiv_detailsDiv{
+    margin-left: 10px;
+    width: 100%;
+}
+
+.userCommentDiv_detailsDiv_personal{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.userCommentDiv_detailsDiv_personal p{
+    margin-top: 1px;
+    margin-bottom: 5px
+}
