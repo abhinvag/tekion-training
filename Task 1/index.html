@@ -4,54 +4,26 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Comment Section</title>
+    <title>Tekion Book</title>
     <link rel="stylesheet" href="style.css"></link>
     <script src="./index.js"></script>
+    <script src="https://kit.fontawesome.com/0dfa778364.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="mainDiv">
-        <h1>Comment Section</h1>
+        <h1>Tekion Book</h1>
         <img class="mainDiv_image" src="https://img.etimg.com/thumb/width-1200,height-900,imgsize-72880,resizemode-1,msid-91945253/industry/services/property-/-cstruction/tech-firm-tekion-leases-over-one-lakh-sqft-office-space-in-bengaluru-in-expansion-bid.jpg">
-        <button id="showButton" onclick="showComments()">Show Comments</button>
-        <!-- <div class="commentSection">
-            <div class="commentSection_userCommentDiv">
-                <img class="userCommentDiv_userImage" src="https://media.npr.org/assets/img/2022/11/08/ap22312071681283-0d9c328f69a7c7f15320e8750d6ea447532dff66.jpg">
-                <div class="userCommentDiv_detailsDiv">
-                    <div class="userCommentDiv_detailsDiv_personal">
-                        <p>Chris Evans</p>
-                        <p>10 Jan 2023, 10:44 AM</p>
-                    </div>
-                    <div class="userCommentDiv_detailsDiv_comment">
-                        Amazing Office
-                    </div>
-                </div>
-            </div>
-            <div class="commentSection_userCommentDiv nestedComment">
-                <img class="userCommentDiv_userImage" src="https://e00-marca.uecdn.es/assets/multimedia/imagenes/2023/01/12/16735402991293.jpg">
-                <div class="userCommentDiv_detailsDiv">
-                    <div class="userCommentDiv_detailsDiv_personal">
-                        <p>Robert Downey Jr.</p>
-                        <p>16 Jan 2023, 5:20 PM</p>
-                    </div>
-                    <div class="userCommentDiv_detailsDiv_comment">
-                        Hey Chris !! 
-                        How are you ??
-                    </div>
-                </div>
-            </div>
+        <div class="addCommentDiv">
+            <input id="userName" type="text" placeholder="Enter Name" name="userName" oninput="updateNewComment()">
+            <input id="userImage" type="text" placeholder="Enter Image URL" name="userImage" oninput="updateNewComment()">
+            <textarea id="userComment" rows="4" cols="50" placeholder="Enter Comment" name="userComment" oninput="updateNewComment()"></textarea>
+            <button class="addCommentButton" type="submit" onclick="addNewComment('comment')">Comment</button>
         </div>
-        <div class="commentSection_userCommentDiv">
-            <img class="userCommentDiv_userImage" src="https://e00-marca.uecdn.es/assets/multimedia/imagenes/2023/01/12/16735402991293.jpg">
-            <div class="userCommentDiv_detailsDiv">
-                <div class="userCommentDiv_detailsDiv_personal">
-                    <p>Robert Downey Jr.</p>
-                    <p>16 Jan 2023, 5:20 PM</p>
-                </div>
-                <div class="userCommentDiv_detailsDiv_comment">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eleifend ex at congue porta. Morbi sit amet sollicitudin augue. Suspendisse vitae consequat metus.
-                </div>
-            </div>
-        </div> -->
+        <a id="showButton" onclick="showComments()" class="showHideCommentsButton">Show Comments <i class="fa fa-light fa-angle-down"></i></a>
+        <a id="hideButton" style="display: none;" onclick="hideComments()" class="showHideCommentsButton">Hide Comments <i class="fa fa-light fa-angle-up"></i></a>
     </div>
 </body>
 </html>

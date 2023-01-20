@@ -1,3 +1,19 @@
+body{
+    background-color: #f8f9fa;
+    font-family: 'Roboto', sans-serif;
+}
+
+button{
+    margin-top: 5px;
+    background-color: white;
+    border-color: transparent;
+    cursor: pointer;
+}
+
+i{
+    font-size: 15px;
+}
+
 .mainDiv{
     display: flex;
     flex-direction: column;
@@ -10,6 +26,64 @@
 .mainDiv_image{
     height: 400px;
     width: 100%;
+    border-radius: 2%;
+}
+
+.addCommentDiv{
+    display: flex;
+    flex-direction: column;
+    margin: 10px auto;
+    width: 100%;
+}
+
+.addCommentDiv input, textarea{
+    margin-top: 10px;
+    padding: 10px;
+}
+
+.addCommentDiv input, textarea {
+    border: none;
+}
+
+.addCommentButton{
+    width: 100px;
+    background-color: rgba(0, 128, 0, 0.545) !important;
+    color: white;
+    transition-duration: 500ms;
+    border-radius: 5%;
+    margin-top: 10px;
+    padding: 10px;
+}
+
+.addCommentButton:hover{
+    background-color: rgba(0, 128, 0, 0.764) !important;
+}
+
+.cancelButton{
+    background-color: rgba(255, 0, 0, 0.545) !important;
+}
+
+.cancelButton:hover{
+    background-color: rgba(255, 0, 0, 0.767) !important;
+}
+
+#userName-reply, #userImage-reply, #userComment-reply {
+    border: solid;
+    border-color: gray;
+}
+
+.showHideCommentsButton{
+    align-self: left;
+    margin: 10px 0 10px 0;
+    width: 100%;
+    cursor: pointer;
+}
+
+#wholeCommentsDiv{
+    background-color: white;
+    padding: 0 20px 20px 20px;
+    border-radius: 2%;
+    width: 95%;
 }
 
 .commentWithReply{
@@ -21,6 +95,10 @@
     align-items: center;
     width: 100%;
     margin-top: 20px;
+    /* border-bottom: solid;
+    border-width: 1px;
+    border-color: gray;
+    padding-bottom: 5px; */
 }
 
 .userCommentDiv_userImage{
@@ -45,14 +123,18 @@
     margin-bottom: 5px
 }
 
+.userCommentDiv_detailsDiv_comment{
+    font-size: 15px;
+}
+
 .nestedComment{
     margin-left: 10%;
     width: auto;
 }
 
-button{
-    margin-top: 10px;
-}
+/* .showHideRepliesButton{
+    margin-left: 9%;
+} */
 
 @media only screen and (max-width: 1000px) {
     .mainDiv{
