@@ -1,0 +1,166 @@
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f8f9fa;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+button{
+  margin-top: 5px;
+  background-color: #f8f9fa;
+  border-color: transparent;
+  cursor: pointer;
+}
+
+i{
+  font-size: 15px;
+}
+
+.mainDiv{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40%;
+  margin: auto;
+}
+
+.mainDiv_image{
+  height: 400px;
+  width: 100%;
+  border-radius: 2%;
+}
+
+.addCommentDiv{
+  display: flex;
+  flex-direction: column;
+  margin: 10px auto;
+  width: 100%;
+}
+
+.addCommentDiv input, textarea{
+  margin-top: 10px;
+  padding: 10px;
+}
+
+.addCommentDiv input, textarea {
+  border: none;
+}
+
+.addCommentButton{
+  width: 100px;
+  background-color: rgba(0, 128, 0, 0.545) !important;
+  color: white;
+  transition-duration: 500ms;
+  border-radius: 5%;
+  margin-top: 10px;
+  padding: 10px;
+}
+
+.addCommentButton:hover{
+  background-color: rgba(0, 128, 0, 0.764) !important;
+}
+
+.cancelButton{
+  margin-left: 5px;
+  background-color: rgba(255, 0, 0, 0.545) !important;
+}
+
+.cancelButton:hover{
+  background-color: rgba(255, 0, 0, 0.767) !important;
+}
+
+#userName-reply, #userImage-reply, #userComment-reply {
+  border: solid;
+  border-color: gray;
+}
+
+.showHideCommentsButton{
+  margin: 10px 0 10px 0;
+  width: 100%;
+  cursor: pointer;
+}
+
+#wholeCommentsDiv{
+  background-color: white;
+  padding: 0 20px 20px 20px;
+  border-radius: 2%;
+  width: 95%;
+}
+
+.commentWithReply{
+  width: 100%;
+}
+
+.commentSection_userCommentDiv{
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-top: 20px;
+  /* border-bottom: solid;
+  border-width: 1px;
+  border-color: gray;
+  padding-bottom: 5px; */
+}
+
+.userCommentDiv_userImage{
+  border-radius: 100%;
+  width: 50px;
+  height: 50px;
+}
+
+.userCommentDiv_detailsDiv{
+  margin-left: 10px;
+  width: 100%;
+}
+
+.userCommentDiv_detailsDiv_personal{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.userCommentDiv_detailsDiv_personal p{
+  margin-top: 1px;
+  margin-bottom: 5px
+}
+
+.userCommentDiv_detailsDiv_comment{
+  font-size: 15px;
+}
+
+.nestedComment{
+  margin-left: 10%;
+  width: auto;
+}
+
+/* .showHideRepliesButton{
+  margin-left: 9%;
+} */
+
+@media only screen and (max-width: 1000px) {
+  .mainDiv{
+      width: 70%;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .mainDiv{
+      width: 80%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .mainDiv{
+      width: 90%;
+  }
+}
+
+
+
