@@ -1,24 +1,22 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import AddComment from './AddComment';
 import CommentWithReply from './CommentWithReply';
 import ReplyButton from './ReplyButton';
 import SimpleComment from './SimpleComment';
+import {ID, DATE } from './constants';
 
-function CommentSection(props) {
+function CommentSection({comments=[], updateComments}) {
 
-    const [comments, setComments] = useState(props.comments);
     const [showCommentsToggle, setShowCommentsToggle] = useState(false);
     const [showAddReplyToggle, setShowAddReplyToggle] = useState(false);
     const [currCommentID, setCurrCommentID] = useState();
 
-    // useEffect(() => {
-    //     let comments = localStorage.getItem("comments");
-    //     setComments(JSON.parse(comments))
-    //     //console.log(comments);
-    // }, [])
-
     const updateShowAddReplyToggle = (state) => {
         setShowAddReplyToggle(state);
+    }
+
+    const updateShowCommentsToggle = () => {
+        setShowCommentsToggle(!showCommentsToggle);
     }
     
 
@@ -28,47 +26,38 @@ function CommentSection(props) {
             <>
                 <a 
                 id="hideButton" 
-                onClick={() => {
-                    setShowCommentsToggle(false);
-                }} 
+                onClick={updateShowCommentsToggle} 
                 className="showHideCommentsButton"
                 >
                     Hide Comments <i className="fa fa-light fa-angle-up"></i>
                 </a>
-                {props.comments.map((comment) => (
+                {comments.map((comment) => (
                     <>
                         {comment.replies.length ===  0 ? (
                             <div style={{width: "100%"}}>
                                 <SimpleComment
-                                    userName = {comment.userName}
-                                    userImage = {comment.userImage}
-                                    userComment = {comment.userComment}
-                                    date = {comment.date}
+                                    comment = {comment}
+                                    date = {comment[DATE]}
                                 />
                                 <ReplyButton
                                     updateShowAddReplyToggle={updateShowAddReplyToggle}
                                     setCurrCommentID={setCurrCommentID}
                                     comment={comment}
                                 />
-                                {(showAddReplyToggle && comment.id == currCommentID) && (
+                                {(showAddReplyToggle && comment[ID] == currCommentID) && (
                                     <AddComment
                                         type="reply"
                                         updateShowAddReplyToggle={updateShowAddReplyToggle}
                                         comment={comment}
-                                        updateComments={props.updateComments}
+                                        updateComments={updateComments}
                                     />
                                 )}
                             </div>
                         ):(
                             <>
                                 <CommentWithReply 
-                                    userName = {comment.userName}
-                                    userImage = {comment.userImage}
-                                    userComment = {comment.userComment}
-                                    date = {comment.date}
-                                    replies = {comment.replies}
-                                    id={comment.id}
-                                    updateComments={props.updateComments}
+                                    comment={comment}
+                                    updateComments={updateComments}
                                 />
                             </>
                         )}
@@ -78,9 +67,7 @@ function CommentSection(props) {
         ):(
             <a 
             id="showButton" 
-            onClick={() => {
-                setShowCommentsToggle(true);
-            }} 
+            onClick={updateShowCommentsToggle} 
             className="showHideCommentsButton"
             >
                 Show Comments <i className="fa fa-light fa-angle-down"></i>

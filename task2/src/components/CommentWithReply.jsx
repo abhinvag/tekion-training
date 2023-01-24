@@ -2,8 +2,9 @@ import React, {useState} from 'react'
 import ReplyButton from './ReplyButton';
 import SimpleComment from './SimpleComment'
 import AddComment from './AddComment';
+import {ID, COMMENT} from './constants';
 
-function CommentWithReply(props) {
+function CommentWithReply({comment=COMMENT, updateComments}) {
 
     const [showRepliesToggle, setShowRepliesToggle] = useState(false);
     const [showAddReplyToggle, setShowAddReplyToggle] = useState(false);
@@ -13,49 +14,43 @@ function CommentWithReply(props) {
         setShowAddReplyToggle(state);
     }
 
+    const updateShowRepliesToggle = () => {
+        setShowRepliesToggle(!showRepliesToggle);
+    }
+
   return (
     <div className='commentWithReply'>
         <SimpleComment 
-            userName = {props.userName}
-            userImage = {props.userImage}
-            userComment = {props.userComment}
-            date = {props.date}
+            comment={comment}
         />
         <ReplyButton
             updateShowAddReplyToggle={updateShowAddReplyToggle}
             setCurrCommentID={setCurrCommentID}
-            comment={props}
+            comment={comment}
         />
-        {(showAddReplyToggle && props.id == currCommentID) && (
+        {(showAddReplyToggle && comment[ID] == currCommentID) && (
             <AddComment
                 type="reply"
                 updateShowAddReplyToggle={updateShowAddReplyToggle}
-                comment={props}
-                updateComments={props.updateComments}
+                comment={comment}
+                updateComments={updateComments}
             />
         )}
-        {props.replies.length > 0 && (
+        {comment.replies.length > 0 && (
             <>
                 {showRepliesToggle ? (
                     <>
                         <button
                             className='showHideRepliesButton'
-                            onClick={() => {
-                                setShowRepliesToggle(false);
-                            }}
+                            onClick={updateShowRepliesToggle}
                         >
-                            Hide Replies <i class="fa fa-light fa-angle-up"></i>
+                            Hide Replies <i className="fa fa-light fa-angle-up"></i>
                         </button>
-                        {props.replies.map((reply) => (
+                        {comment.replies.map((reply) => (
                             <div className='nestedComment'>
                                 <CommentWithReply 
-                                    userName = {reply.userName}
-                                    userImage = {reply.userImage}
-                                    userComment = {reply.userComment}
-                                    date = {reply.date}
-                                    replies = {reply.replies}
-                                    id={reply.id}
-                                    updateComments={props.updateComments}
+                                    comment={reply}
+                                    updateComments={updateComments}
                                 />
                             </div>
                         ))}
@@ -63,11 +58,9 @@ function CommentWithReply(props) {
                 ):(
                     <button
                         className='showHideRepliesButton'
-                        onClick={() => {
-                            setShowRepliesToggle(true);
-                        }}
+                        onClick={updateShowRepliesToggle}
                     >
-                        Show Replies <i class="fa fa-light fa-angle-down"></i>
+                        Show Replies <i className="fa fa-light fa-angle-down"></i>
                     </button>
                 )}
             </>

@@ -1,66 +1,40 @@
 import React, {useState} from 'react'
 import { nanoid } from 'nanoid';
+import {findCommentAndPushReply, calculateDate} from "./helper";
+import {COMMENT, ID, USER_NAME, USER_IMAGE, USER_COMMENT, DATE } from './constants';
 
-function AddComment(props) {
+function AddComment({type="comment", updateShowAddReplyToggle, updateComments, comment=COMMENT}) {
 
-    const [comment, setComment] = useState({
-        "id": "",
-        "userName": "",
-        "userImage": "",
-        "userComment": "",
-        "date": "",
-        "replies": []
-    })
+    const [commentState, setCommentState] = useState(COMMENT)
 
     const updateComment = (e) => {
         const {name, value} = e.target;
-        setComment((prevValue) => {
+        console.log(name, value)
+        setCommentState((prevValue) => {
             return {
                 ...prevValue,
                 [name]: value,
             }
         })
     }
-    function findCommentAndPushReply(id, reply, comments){
-
-        for(var i=0;i<comments.length;i++){
-            if(comments[i].id == id){
-                comments[i].replies.push(reply);
-                return true;
-            }
-            else if(comments[i].replies.length != 0){
-                let temp = findCommentAndPushReply(id, reply, comments[i].replies);
-                if(temp) return;
-            }
-        }
     
-        return;
-    
-    }
-
     const addNewComment = () => {
         let comments = JSON.parse(localStorage.getItem("comments"));
-        comment.id = nanoid();
-        let date = new Date();
-        const month = ["Jan","Feb","March","April","May","June","July","Aug","Sept","Oct","Nov","Dec"];
-        let currentDate = date.getDate() + " " + month[date.getUTCMonth()] + " " + date.getFullYear() + ", " + date.getHours() + ":" + date.getUTCMinutes();
-        comment.date = currentDate
-        if(props.type == "comment") comments.push(comment);
+        commentState[ID] = nanoid();
+        commentState[DATE] = calculateDate();
+        if(type == "comment") comments.push(commentState);
         else{
-            console.log(props.comment.id, comment);
-            findCommentAndPushReply(props.comment.id, comment, comments)
-            props.updateShowAddReplyToggle(false)
+            //console.log(comment.id, commentState);
+            findCommentAndPushReply(comment.id, commentState, comments)
+            updateShowAddReplyToggle(false)
         }
         localStorage.setItem("comments", JSON.stringify(comments));
-        props.updateComments(comments)
-        setComment({
-            "id": "",
-            "userName": "",
-            "userImage": "",
-            "userComment": "",
-            "date": "",
-            "replies": []
-        })
+        updateComments(comments)
+        setCommentState(COMMENT)
+    }
+
+    const handleCancel = () => {
+        updateShowAddReplyToggle(false)
     }
 
   return (
@@ -69,27 +43,27 @@ function AddComment(props) {
             id="userName" 
             type="text" 
             placeholder="Enter Name" 
-            name="userName" 
-            value={comment.userName}
+            name={USER_NAME} 
+            value={commentState[USER_NAME]}
             onChange={updateComment}
         />
         <input 
             id="userImage" 
             type="text" 
             placeholder="Enter Image URL" 
-            name="userImage" 
-            value={comment.userImage}
+            name={USER_IMAGE} 
+            value={commentState[USER_IMAGE]}
             onChange={updateComment}
         />
         <textarea 
             id="userComment" 
             rows="4" cols="50" 
             placeholder="Enter Comment" 
-            name="userComment" 
-            value={comment.userComment}
+            name={USER_COMMENT} 
+            value={commentState[USER_COMMENT]}
             onChange={updateComment}
         />
-        {props.type == "reply" ? (
+        {type == "reply" ? (
             <div>
                 <button 
                     className="addCommentButton" 
@@ -101,9 +75,7 @@ function AddComment(props) {
                 <button 
                     className="addCommentButton cancelButton" 
                     type="submit" 
-                    onClick={() => {
-                        props.updateShowAddReplyToggle(false)
-                    }}
+                    onClick={handleCancel}
                 >
                     Cancel
                 </button>
