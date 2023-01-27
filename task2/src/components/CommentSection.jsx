@@ -5,7 +5,7 @@ import ReplyButton from './ReplyButton';
 import SimpleComment from './SimpleComment';
 import {ID, DATE } from './constants';
 
-function CommentSection({comments=[], updateComments}) {
+function CommentSection({comments=[], updateComments = () => {}}) {
 
     const [showCommentsToggle, setShowCommentsToggle] = useState(false);
     const [showAddReplyToggle, setShowAddReplyToggle] = useState(false);
@@ -50,6 +50,7 @@ function CommentSection({comments=[], updateComments}) {
                                         updateShowAddReplyToggle={updateShowAddReplyToggle}
                                         comment={comment}
                                         updateComments={updateComments}
+                                        comments={comments}
                                     />
                                 )}
                             </div>
@@ -58,6 +59,7 @@ function CommentSection({comments=[], updateComments}) {
                                 <CommentWithReply 
                                     comment={comment}
                                     updateComments={updateComments}
+                                    comments={comments}
                                 />
                             </>
                         )}

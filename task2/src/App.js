@@ -1,35 +1,51 @@
-import { useEffect, useState } from 'react';
-import logo from './logo.svg';
+import { useState, useEffect } from 'react';
 import './App.css';
-import AddComment from './components/AddComment';
-import CommentSection from './components/CommentSection';
+import Gallery from './components/Gallery';
+import Post from './components/Post';
+import AddPost from './components/AddPost'
 import data from "./data.json";
+import { POST_ID } from './components/constants';
+import { updatePostsOnLocalStorage } from './components/helper';
 
 function App() {
 
-  const [comments, setComments] = useState([]);
+  const [currPostID, setCurrPostID] = useState("id");
+  const [posts, setPosts] = useState({});
   
   useEffect(() => {
-    var comments = localStorage.getItem("comments");
-    if(comments == undefined){
-      localStorage.setItem("comments", JSON.stringify(data));
+    
+    let localPosts = JSON.parse(localStorage.getItem("posts"));
+    
+    if(localPosts == null){
+      localStorage.setItem("posts", JSON.stringify(data));
+      setPosts(JSON.stringify(data));
     }
     else{
-      setComments(JSON.parse(comments))
+      setPosts(localPosts);
     }
+  
   }, [])
 
-  const updateComments = (newCommentsArray) => {
-    setComments(newCommentsArray)
-  } 
-  
+  const updateCurrPostID = (id) => {
+    setCurrPostID(id);
+  }
+
+  const updatePosts = (newPost) => {
+    let newPostObj = JSON.parse(JSON.stringify(posts));
+    newPostObj[newPost[POST_ID]] = newPost;
+    updatePostsOnLocalStorage("", {}, newPostObj);
+    setPosts(newPostObj);
+  }
+
   return (
-    <div className="mainDiv">
-      <h1>Tekion Book</h1>
-      <img className="mainDiv_image" src="https://img.etimg.com/thumb/width-1200,height-900,imgsize-72880,resizemode-1,msid-91945253/industry/services/property-/-cstruction/tech-firm-tekion-leases-over-one-lakh-sqft-office-space-in-bengaluru-in-expansion-bid.jpg"></img>
-      <AddComment type="comment" updateComments={updateComments} />
-      <CommentSection comments={comments} updateComments={updateComments} />
-    </div>
+    <>
+      <h1 className='main_heading'>Global Image Book</h1>
+      <div className='wall'>
+        <Gallery posts={posts} updateCurrPostID={updateCurrPostID} currPostID={currPostID} />
+        <Post currPostID={currPostID} posts={posts} />
+        <AddPost posts={posts} updatePosts={updatePosts} />
+      </div>
+    </>
   );
 }
 

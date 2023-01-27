@@ -1,7 +1,7 @@
 import React from 'react'
 import { COMMENT } from './constants'
 
-function ReplyButton({updateShowAddReplyToggle, setCurrCommentID, comment=COMMENT}) {
+function ReplyButton({updateShowAddReplyToggle = () => {}, setCurrCommentID = () => {}, comment=COMMENT}) {
 
     const handleClick = () => {
         updateShowAddReplyToggle(true)

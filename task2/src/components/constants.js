@@ -13,4 +13,17 @@ COMMENT[USER_COMMENT] = "";
 COMMENT[DATE] = "";
 COMMENT[REPLIES] = []
 
-export {COMMENT, ID, USER_NAME, USER_IMAGE, USER_COMMENT, DATE, REPLIES};
+const POST_ID = "postID";
+const POST_IMAGE_URL = "postImageURL";
+const POST_BY = "postBy";
+const POST_COMMENTS = "comments";
+
+const POST = {};
+POST[POST_ID] = "";
+POST[POST_IMAGE_URL] = "";
+POST[POST_BY] = "";
+POST[POST_COMMENTS] = [];
+
+const MONTHS_ARRAY = ["Jan","Feb","March","April","May","June","July","Aug","Sept","Oct","Nov","Dec"];
+
+export {COMMENT, ID, USER_NAME, USER_IMAGE, USER_COMMENT, DATE, REPLIES, MONTHS_ARRAY, POST, POST_ID, POST_IMAGE_URL, POST_BY, POST_COMMENTS};

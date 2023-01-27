@@ -22,6 +22,67 @@ i{
   font-size: 15px;
 }
 
+input, textarea{
+  margin-top: 10px;
+  padding: 10px;
+  border: none;
+}
+
+.main_heading{
+  margin: 0;
+  padding: 10px;
+  background-color: rgba(0, 128, 0, 0.6);
+  color: white
+}
+
+.wall{
+  margin-top: 50px;
+  display: flex;
+}
+
+.gallery_div{
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 80vh;
+  overflow: auto;
+}
+
+.gallery_image{
+  width: 50%;
+  height: 100px;
+  border-radius: 2%;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition-duration: 300ms;
+}
+
+.gallery_image_selected{
+  border-style: solid;
+  border-color: rgba(0, 128, 0, 0.6);
+  border-width: 2px;
+  padding: 10px;
+}
+
+.addPostDiv{
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.addPostDiv h2{
+  margin-top: 0;
+  font-size: 18px;
+}
+
+.addPostDiv input{
+  margin-top: 0;
+  width: 80%;
+}
+
 .mainDiv{
   display: flex;
   flex-direction: column;
@@ -44,18 +105,9 @@ i{
   width: 100%;
 }
 
-.addCommentDiv input, textarea{
-  margin-top: 10px;
-  padding: 10px;
-}
-
-.addCommentDiv input, textarea {
-  border: none;
-}
-
 .addCommentButton{
   width: 100px;
-  background-color: rgba(0, 128, 0, 0.545) !important;
+  background-color: rgba(0, 128, 0, 0.6) !important;
   color: white;
   transition-duration: 500ms;
   border-radius: 5%;
@@ -64,7 +116,7 @@ i{
 }
 
 .addCommentButton:hover{
-  background-color: rgba(0, 128, 0, 0.764) !important;
+  background-color: rgba(0, 128, 0, 0.8) !important;
 }
 
 .cancelButton{
@@ -140,24 +192,61 @@ i{
   width: auto;
 }
 
+.error {
+  color: rgba(255, 0, 0, 1);
+  margin: 5px 0;
+  font-size: 15px;
+}
+
+.makeWhite {
+  background-color: white;
+  padding: 10px;
+  border-radius: 2%;
+}
+
 /* .showHideRepliesButton{
   margin-left: 9%;
 } */
 
 @media only screen and (max-width: 1000px) {
   .mainDiv{
-      width: 70%;
+      width: 60%;
   }
 }
 
 @media only screen and (max-width: 800px) {
+
+  .gallery_div{
+    flex-direction: row;
+    width: 80%;
+    height: auto;
+    margin-bottom: 10px;
+  }
+
+  .gallery_image{
+    margin-bottom: 0;
+    margin-right: 10px;
+  }
+
+  .wall{
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
   .mainDiv{
       width: 80%;
+  }
+
+  .addPostDiv{
+    width: 80%;
+    margin-top: 10px;
   }
 }
 
 @media only screen and (max-width: 600px) {
-  .mainDiv{
+
+  .mainDiv, .gallery_div, .addPostDiv{
       width: 90%;
   }
 }

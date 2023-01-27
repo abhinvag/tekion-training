@@ -1,7 +1,8 @@
+import { MONTHS_ARRAY } from "./constants";
+
 function calculateDate(){
     let date = new Date();
-    const month = ["Jan","Feb","March","April","May","June","July","Aug","Sept","Oct","Nov","Dec"];
-    let currentDate = date.getDate() + " " + month[date.getUTCMonth()] + " " + date.getFullYear() + ", " + date.getHours() + ":" + date.getUTCMinutes();
+    let currentDate = date.getDate() + " " + MONTHS_ARRAY[date.getUTCMonth()] + " " + date.getFullYear() + ", " + date.getHours() + ":" + date.getUTCMinutes();
     return currentDate
 }
 
@@ -14,13 +15,44 @@ function findCommentAndPushReply(id, reply, comments){
         }
         else if(comments[i].replies.length != 0){
             let temp = findCommentAndPushReply(id, reply, comments[i].replies);
-            if(temp) return;
+            if(temp) return true;
         }
     }
 
-    return;
+    return false;
 
 }
 
-export {calculateDate, findCommentAndPushReply}
+const checkImage = (url) => {
+
+    //  check if a valid url
+
+    try { 
+        new URL(url); 
+    }
+    catch(e){ 
+
+        return false; 
+    }
+
+    // check if the url is an image 
+
+    url = url.split('?')[0];
+    var parts = url.split('.');
+    var extension = parts[parts.length-1];
+    var imageTypes = ['jpg','jpeg','tiff','png','gif','bmp'];
+    if(imageTypes.indexOf(extension) !== -1) {
+        return true;   
+    }
+
+    return false;
+}
+
+const updatePostsOnLocalStorage = (postID, newPost, posts) => {
+    //let posts = JSON.parse(localStorage.getItem("posts"));
+    if(postID != "") posts[postID] = newPost;
+    localStorage.setItem("posts", JSON.stringify(posts));
+}
+ 
+export {calculateDate, findCommentAndPushReply, checkImage, updatePostsOnLocalStorage}
 
