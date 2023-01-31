@@ -1,9 +1,11 @@
 import React, {useState} from 'react'
 import { nanoid } from 'nanoid';
-import {findCommentAndPushReply, calculateDate, checkImage} from "./helper";
-import {COMMENT, ID, USER_NAME, USER_IMAGE, USER_COMMENT, DATE } from './constants';
+import {calculateDate, checkImage} from "./helper";
+import {COMMENT, ID, USER_NAME, USER_IMAGE, USER_COMMENT, DATE, CURR_POST_ID } from './constants';
+import { useDispatch, useSelector } from 'react-redux';
+import {addComment, addReply} from "../actions"
 
-function AddComment({type="comment", updateShowAddReplyToggle = () => {}, updateComments = () => {}, comment=COMMENT, comments=[]}) {
+function AddComment({type="comment", updateShowAddReplyToggle = () => {}, comment=COMMENT}) {
 
     const [commentState, setCommentState] = useState(COMMENT);
     const [validationErrorObj, setValidationErrorObj] = useState({
@@ -11,6 +13,10 @@ function AddComment({type="comment", updateShowAddReplyToggle = () => {}, update
         [USER_IMAGE]: "",
         [USER_COMMENT]: "",
     })
+
+    const currPostID = useSelector(state => state[CURR_POST_ID]);
+
+    const dispatch = useDispatch();
 
     const updateComment = (e) => {
         const {name, value} = e.target;
@@ -61,16 +67,17 @@ function AddComment({type="comment", updateShowAddReplyToggle = () => {}, update
     }   
     
     const addNewComment = () => {
-        let commentsArray = JSON.parse(JSON.stringify(comments));
-        commentState[ID] = nanoid();
-        commentState[DATE] = calculateDate();
+        let newComment = commentState;
+        newComment[ID] = nanoid();
+        newComment[DATE] = calculateDate();
         if(validate()){
-            if(type == "comment") commentsArray.push(commentState);
+            if(type == "comment") {
+                dispatch(addComment(currPostID, newComment));
+            }
             else{
-                findCommentAndPushReply(comment.id, commentState, commentsArray)
+                dispatch(addReply(currPostID, comment.id, newComment))
                 updateShowAddReplyToggle(false)
             }
-            updateComments(commentsArray)
             setCommentState(COMMENT)
         }
         else{

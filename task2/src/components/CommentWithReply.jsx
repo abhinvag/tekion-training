@@ -4,7 +4,7 @@ import SimpleComment from './SimpleComment'
 import AddComment from './AddComment';
 import {ID, COMMENT} from './constants';
 
-function CommentWithReply({comment=COMMENT, updateComments = () => {}, comments={}}) {
+function CommentWithReply({comment=COMMENT}) {
 
     const [showRepliesToggle, setShowRepliesToggle] = useState(false);
     const [showAddReplyToggle, setShowAddReplyToggle] = useState(false);
@@ -33,8 +33,6 @@ function CommentWithReply({comment=COMMENT, updateComments = () => {}, comments=
                 type="reply"
                 updateShowAddReplyToggle={updateShowAddReplyToggle}
                 comment={comment}
-                updateComments={updateComments}
-                comments={comments}
             />
         )}
         {comment.replies.length > 0 && (
@@ -51,8 +49,6 @@ function CommentWithReply({comment=COMMENT, updateComments = () => {}, comments=
                             <div className='nestedComment'>
                                 <CommentWithReply 
                                     comment={reply}
-                                    updateComments={updateComments}
-                                    comments={comments}
                                 />
                             </div>
                         ))}

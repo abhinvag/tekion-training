@@ -1,11 +1,15 @@
 import React, {useState} from 'react';
-import { POST, POST_ID ,POST_IMAGE_URL, POST_BY, POST_COMMENTS } from './constants';
+import { POST, POST_ID ,POST_IMAGE_URL} from './constants';
 import { nanoid } from 'nanoid';
+import { useDispatch } from 'react-redux';
+import {addPost} from "../actions";
 
-function AddPost({updatePosts}) {
+function AddPost() {
 
     const [imageURL, setImageURL] = useState("");
     const [validationError, setValidationError] = useState("");
+
+    const dispatch = useDispatch();
 
     const updateImageURL = (e) => {
         setImageURL(e.target.value);
@@ -32,10 +36,9 @@ function AddPost({updatePosts}) {
         newPost[POST_IMAGE_URL] = imageURL;
         newPost[POST_ID] = nanoid();
         if(validate(newPost)){
-            updatePosts(newPost)
+            dispatch(addPost(newPost));
             setImageURL("")
         };
-        console.log(newPost);
     }
 
     const handleFocus = () => {

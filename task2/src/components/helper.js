@@ -6,6 +6,7 @@ function calculateDate(){
     return currentDate
 }
 
+
 function findCommentAndPushReply(id, reply, comments){
 
     for(var i=0;i<comments.length;i++){
@@ -48,11 +49,5 @@ const checkImage = (url) => {
     return false;
 }
 
-const updatePostsOnLocalStorage = (postID, newPost, posts) => {
-    //let posts = JSON.parse(localStorage.getItem("posts"));
-    if(postID != "") posts[postID] = newPost;
-    localStorage.setItem("posts", JSON.stringify(posts));
-}
- 
-export {calculateDate, findCommentAndPushReply, checkImage, updatePostsOnLocalStorage}
+export {calculateDate, findCommentAndPushReply, checkImage}
 
