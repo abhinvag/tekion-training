@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import AddComment from './AddComment';
 import CommentSection from './CommentSection';
-import { POST, POST_COMMENTS, POST_IMAGE_URL, POSTS, CURR_POST_ID } from './constants';
+import { POST, POST_COMMENTS, POST_IMAGE_URL, POSTS, CURR_POST_ID, POST_ID } from '../constants';
 import { useSelector } from 'react-redux';
 
 
@@ -13,7 +13,7 @@ function Post() {
   const [currPost, setCurrPost] = useState(POST);
 
   useEffect(() => {
-    setCurrPost(posts[currPostID]);
+    setCurrPost(posts.find((post) => post[POST_ID] === currPostID));
   }, [currPostID, posts])
 
   return (

@@ -1,8 +1,7 @@
 import React, {useState} from 'react';
-import { POST, POST_ID ,POST_IMAGE_URL} from './constants';
-import { nanoid } from 'nanoid';
+import {POST_IMAGE_URL} from '../constants';
 import { useDispatch } from 'react-redux';
-import {addPost} from "../actions";
+import {addPost} from "../store/posts/actions";
 
 function AddPost() {
 
@@ -15,28 +14,21 @@ function AddPost() {
         setImageURL(e.target.value);
     }
 
-    const validate = (newPost) => {
+    const validate = (imageURL) => {
 
         let isValid = true;
         
-        if(newPost[POST_IMAGE_URL].trim().length == 0){
+        if(imageURL.trim().length == 0){
             setValidationError("This field cannot be empty !");
             isValid = false;
         }
-        // else if(!checkImage(commentState[USER_IMAGE])){
-        //     setValidationError("This is not a valid image URL !");
-        //    isValid = false;
-        // }
         
         return isValid;
     }
 
     const handleClick = () => {
-        let newPost = POST;
-        newPost[POST_IMAGE_URL] = imageURL;
-        newPost[POST_ID] = nanoid();
-        if(validate(newPost)){
-            dispatch(addPost(newPost));
+        if(validate(imageURL)){
+            dispatch(addPost(imageURL));
             setImageURL("")
         };
     }

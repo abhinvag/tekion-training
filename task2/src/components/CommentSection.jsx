@@ -3,7 +3,7 @@ import AddComment from './AddComment';
 import CommentWithReply from './CommentWithReply';
 import ReplyButton from './ReplyButton';
 import SimpleComment from './SimpleComment';
-import {ID, DATE } from './constants';
+import {COMMENT_ID, COMMENT_REPLIES, DATE } from '../constants';
 
 function CommentSection({comments=[]}) {
 
@@ -33,7 +33,7 @@ function CommentSection({comments=[]}) {
                 </a>
                 {comments.map((comment) => (
                     <>
-                        {comment.replies.length ===  0 ? (
+                        {comment[COMMENT_REPLIES].length ===  0 ? (
                             <div style={{width: "100%"}}>
                                 <SimpleComment
                                     comment = {comment}
@@ -44,7 +44,7 @@ function CommentSection({comments=[]}) {
                                     setCurrCommentID={setCurrCommentID}
                                     comment={comment}
                                 />
-                                {(showAddReplyToggle && comment[ID] == currCommentID) && (
+                                {(showAddReplyToggle && comment[COMMENT_ID] == currCommentID) && (
                                     <AddComment
                                         type="reply"
                                         updateShowAddReplyToggle={updateShowAddReplyToggle}

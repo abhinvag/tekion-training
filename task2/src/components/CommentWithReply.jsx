@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import ReplyButton from './ReplyButton';
 import SimpleComment from './SimpleComment'
 import AddComment from './AddComment';
-import {ID, COMMENT} from './constants';
+import {COMMENT_ID, COMMENT, COMMENT_REPLIES} from '../constants';
 
 function CommentWithReply({comment=COMMENT}) {
 
@@ -28,14 +28,14 @@ function CommentWithReply({comment=COMMENT}) {
             setCurrCommentID={setCurrCommentID}
             comment={comment}
         />
-        {(showAddReplyToggle && comment[ID] == currCommentID) && (
+        {(showAddReplyToggle && comment[COMMENT_ID] == currCommentID) && (
             <AddComment
                 type="reply"
                 updateShowAddReplyToggle={updateShowAddReplyToggle}
                 comment={comment}
             />
         )}
-        {comment.replies.length > 0 && (
+        {comment[COMMENT_REPLIES].length > 0 && (
             <>
                 {showRepliesToggle ? (
                     <>
@@ -45,7 +45,7 @@ function CommentWithReply({comment=COMMENT}) {
                         >
                             Hide Replies <i className="fa fa-light fa-angle-up"></i>
                         </button>
-                        {comment.replies.map((reply) => (
+                        {comment[COMMENT_REPLIES].map((reply) => (
                             <div className='nestedComment'>
                                 <CommentWithReply 
                                     comment={reply}

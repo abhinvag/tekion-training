@@ -1,9 +1,7 @@
 import React, {useState} from 'react'
-import { nanoid } from 'nanoid';
-import {calculateDate, checkImage} from "./helper";
-import {COMMENT, ID, USER_NAME, USER_IMAGE, USER_COMMENT, DATE, CURR_POST_ID } from './constants';
+import {COMMENT, COMMENT_ID, USER_NAME, USER_IMAGE, USER_COMMENT, DATE, CURR_POST_ID } from '../constants';
 import { useDispatch, useSelector } from 'react-redux';
-import {addComment, addReply} from "../actions"
+import {addComment, addReply} from "../store/posts/actions"
 
 function AddComment({type="comment", updateShowAddReplyToggle = () => {}, comment=COMMENT}) {
 
@@ -42,10 +40,6 @@ function AddComment({type="comment", updateShowAddReplyToggle = () => {}, commen
             tempValidationErrorObj[USER_IMAGE] = "This field cannot be empty !";
             isValid = false;
         }
-        // else if(!checkImage(commentState[USER_IMAGE])){
-        //     tempValidationErrorObj[USER_IMAGE] = "This is not a valid image URL !";
-        //     isValid = false;
-        // }
         
         if(commentState[USER_COMMENT].trim().length == 0){
             tempValidationErrorObj[USER_COMMENT] = "This field cannot be empty !";
@@ -67,15 +61,12 @@ function AddComment({type="comment", updateShowAddReplyToggle = () => {}, commen
     }   
     
     const addNewComment = () => {
-        let newComment = commentState;
-        newComment[ID] = nanoid();
-        newComment[DATE] = calculateDate();
         if(validate()){
             if(type == "comment") {
-                dispatch(addComment(currPostID, newComment));
+                dispatch(addComment(currPostID, commentState));
             }
             else{
-                dispatch(addReply(currPostID, comment.id, newComment))
+                dispatch(addReply(currPostID, comment[COMMENT_ID], commentState))
                 updateShowAddReplyToggle(false)
             }
             setCommentState(COMMENT)

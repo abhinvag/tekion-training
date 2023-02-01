@@ -1,5 +1,5 @@
 import React from 'react'
-import {USER_NAME, USER_IMAGE, USER_COMMENT, DATE, COMMENT } from './constants';
+import {USER_NAME, USER_IMAGE, USER_COMMENT, DATE, COMMENT } from '../constants';
 
 function SimpleComment({comment=COMMENT}) {
   return (

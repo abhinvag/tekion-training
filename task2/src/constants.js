@@ -1,20 +1,20 @@
 
 // COMMENTS
 
-export const ID = "id";
+export const COMMENT_ID = "commentID";
 export const USER_NAME = "userName";
 export const USER_IMAGE = "userImage";
 export const USER_COMMENT = "userComment";
 export const DATE = "date";
-export const REPLIES = "replies";
+export const COMMENT_REPLIES = "commentReplies";
 
 export const COMMENT = {}
-COMMENT[ID] = "";
+COMMENT[COMMENT_ID] = "";
 COMMENT[USER_NAME] = "";
 COMMENT[USER_IMAGE] = "";
 COMMENT[USER_COMMENT] = "";
 COMMENT[DATE] = "";
-COMMENT[REPLIES] = []
+COMMENT[COMMENT_REPLIES] = []
 
 // POST
 
