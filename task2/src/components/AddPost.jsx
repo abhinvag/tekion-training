@@ -1,14 +1,10 @@
 import React, {useState} from 'react';
 import {POST_IMAGE_URL} from '../constants';
-import { useDispatch } from 'react-redux';
-import {addPost} from "../store/posts/actions";
 
-function AddPost() {
+function AddPost({addPost = () => {}}) {
 
     const [imageURL, setImageURL] = useState("");
     const [validationError, setValidationError] = useState("");
-
-    const dispatch = useDispatch();
 
     const updateImageURL = (e) => {
         setImageURL(e.target.value);
@@ -28,7 +24,7 @@ function AddPost() {
 
     const handleClick = () => {
         if(validate(imageURL)){
-            dispatch(addPost(imageURL));
+            addPost(imageURL);
             setImageURL("")
         };
     }

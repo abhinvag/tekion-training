@@ -1,7 +1,7 @@
 import './App.css';
-import Gallery from './components/Gallery';
-import Post from './components/Post';
-import AddPost from './components/AddPost'
+import { AddPostContainer } from './containers/AddPostContainer';
+import { GalleryContainer } from './containers/GalleryContainer';
+import { PostContainer } from './containers/PostContainer';
 
 
 function App() {
@@ -10,9 +10,9 @@ function App() {
     <>
       <h1 className='main_heading'>Tekion Book</h1>
       <div className='wall'>
-        <Gallery />
-        <Post/>
-        <AddPost />
+        <GalleryContainer />
+        <PostContainer />
+        <AddPostContainer />
       </div>
     </>
   );

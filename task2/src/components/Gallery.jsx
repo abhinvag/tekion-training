@@ -1,17 +1,14 @@
 import React from 'react'
-import { CURR_POST_ID, POSTS, POST_ID, POST_IMAGE_URL } from '../constants'
-import { useSelector, useDispatch } from 'react-redux';
-import {updateCurrPostID} from "../store/curr-post/actions"
+import { POST_ID, POST_IMAGE_URL } from '../constants'
 
-function Gallery() {
-
-    const posts = useSelector(state => state[POSTS]);
-    const currPostID = useSelector(state => state[CURR_POST_ID])
-
-    const dispatch = useDispatch();
+function Gallery({
+    posts = [], 
+    currPostID = "", 
+    updateCurrPostID = () => {}
+}) {
 
     const getHandleClick = (id) =>  () => {
-        dispatch(updateCurrPostID(id))
+        updateCurrPostID(id);
     }
 
   return (
@@ -25,6 +22,6 @@ function Gallery() {
         ))}
     </div>
   )
-}
+}   
 
 export default Gallery

@@ -1,8 +1,8 @@
 import React, {useState} from 'react'
 import ReplyButton from './ReplyButton';
 import SimpleComment from './SimpleComment'
-import AddComment from './AddComment';
 import {COMMENT_ID, COMMENT, COMMENT_REPLIES} from '../constants';
+import { AddCommentContainer } from '../containers/AddCommentContainer';
 
 function CommentWithReply({comment=COMMENT}) {
 
@@ -29,7 +29,7 @@ function CommentWithReply({comment=COMMENT}) {
             comment={comment}
         />
         {(showAddReplyToggle && comment[COMMENT_ID] == currCommentID) && (
-            <AddComment
+            <AddCommentContainer
                 type="reply"
                 updateShowAddReplyToggle={updateShowAddReplyToggle}
                 comment={comment}

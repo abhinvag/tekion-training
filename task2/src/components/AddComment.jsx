@@ -1,9 +1,15 @@
 import React, {useState} from 'react'
-import {COMMENT, COMMENT_ID, USER_NAME, USER_IMAGE, USER_COMMENT, DATE, CURR_POST_ID } from '../constants';
-import { useDispatch, useSelector } from 'react-redux';
-import {addComment, addReply} from "../store/posts/actions"
+import {COMMENT, COMMENT_ID, USER_NAME, USER_IMAGE, USER_COMMENT } from '../constants';
 
-function AddComment({type="comment", updateShowAddReplyToggle = () => {}, comment=COMMENT}) {
+
+function AddComment({
+    type="comment", 
+    updateShowAddReplyToggle = () => {}, 
+    comment=COMMENT, 
+    currPostID = "",
+    addComment = () => {},
+    addReply = () => {}
+}) {
 
     const [commentState, setCommentState] = useState(COMMENT);
     const [validationErrorObj, setValidationErrorObj] = useState({
@@ -11,10 +17,6 @@ function AddComment({type="comment", updateShowAddReplyToggle = () => {}, commen
         [USER_IMAGE]: "",
         [USER_COMMENT]: "",
     })
-
-    const currPostID = useSelector(state => state[CURR_POST_ID]);
-
-    const dispatch = useDispatch();
 
     const updateComment = (e) => {
         const {name, value} = e.target;
@@ -63,10 +65,10 @@ function AddComment({type="comment", updateShowAddReplyToggle = () => {}, commen
     const addNewComment = () => {
         if(validate()){
             if(type == "comment") {
-                dispatch(addComment(currPostID, commentState));
+                addComment(currPostID, commentState);
             }
             else{
-                dispatch(addReply(currPostID, comment[COMMENT_ID], commentState))
+                addReply(currPostID, comment[COMMENT_ID], commentState);
                 updateShowAddReplyToggle(false)
             }
             setCommentState(COMMENT)

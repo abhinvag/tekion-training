@@ -1,15 +1,10 @@
 import React, {useState, useEffect} from 'react'
-import AddComment from './AddComment';
 import CommentSection from './CommentSection';
-import { POST, POST_COMMENTS, POST_IMAGE_URL, POSTS, CURR_POST_ID, POST_ID } from '../constants';
-import { useSelector } from 'react-redux';
+import { POST, POST_COMMENTS, POST_IMAGE_URL, POST_ID } from '../constants';
+import { AddCommentContainer } from '../containers/AddCommentContainer';
 
-
-function Post() {
+function Post({posts = [], currPostID = ""}) {
         
-  const posts = useSelector(state => state[POSTS]);
-  const currPostID = useSelector(state => state[CURR_POST_ID])
-
   const [currPost, setCurrPost] = useState(POST);
 
   useEffect(() => {
@@ -19,7 +14,7 @@ function Post() {
   return (
     <div className="mainDiv">
       <img className="mainDiv_image" src={currPost?.[POST_IMAGE_URL]}></img>
-      <AddComment type="comment" />
+      <AddCommentContainer type="comment" />
       <CommentSection comments={currPost?.[POST_COMMENTS]} />
     </div>
   )

@@ -1,9 +1,9 @@
 import React, {useState} from 'react'
-import AddComment from './AddComment';
 import CommentWithReply from './CommentWithReply';
 import ReplyButton from './ReplyButton';
 import SimpleComment from './SimpleComment';
 import {COMMENT_ID, COMMENT_REPLIES, DATE } from '../constants';
+import { AddCommentContainer } from '../containers/AddCommentContainer';
 
 function CommentSection({comments=[]}) {
 
@@ -45,7 +45,7 @@ function CommentSection({comments=[]}) {
                                     comment={comment}
                                 />
                                 {(showAddReplyToggle && comment[COMMENT_ID] == currCommentID) && (
-                                    <AddComment
+                                    <AddCommentContainer
                                         type="reply"
                                         updateShowAddReplyToggle={updateShowAddReplyToggle}
                                         comment={comment}
