@@ -1,10 +1,12 @@
 import React, {useState} from 'react'
-import ReplyButton from './ReplyButton';
 import SimpleComment from './SimpleComment'
-import {COMMENT_ID, COMMENT, COMMENT_REPLIES} from '../constants';
+import {COMMENT_ID, COMMENT, COMMENT_REPLIES, USER_NAME} from '../constants';
 import { AddCommentContainer } from '../containers/AddCommentContainer';
 
-function CommentWithReply({comment=COMMENT}) {
+function CommentWithReply({
+    comment=COMMENT,
+    commentAuthor=""
+}) {
 
     const [showRepliesToggle, setShowRepliesToggle] = useState(false);
     const [showAddReplyToggle, setShowAddReplyToggle] = useState(false);
@@ -19,15 +21,18 @@ function CommentWithReply({comment=COMMENT}) {
     }
 
   return (
-    <div className='commentWithReply'>
-        <SimpleComment 
-            comment={comment}
-        />
-        <ReplyButton
-            updateShowAddReplyToggle={updateShowAddReplyToggle}
-            setCurrCommentID={setCurrCommentID}
-            comment={comment}
-        />
+    <>
+        <div className='comment'>
+            <SimpleComment 
+                comment={comment}
+                updateShowAddReplyToggle={updateShowAddReplyToggle}
+                setCurrCommentID={setCurrCommentID}
+                showRepliesButton = {comment[COMMENT_REPLIES].length > 0}
+                showRepliesToggle={showRepliesToggle}
+                updateShowRepliesToggle={updateShowRepliesToggle}
+                commentAuthor={commentAuthor}
+            />
+        </div>
         {(showAddReplyToggle && comment[COMMENT_ID] == currCommentID) && (
             <AddCommentContainer
                 type="reply"
@@ -36,35 +41,23 @@ function CommentWithReply({comment=COMMENT}) {
             />
         )}
         {comment[COMMENT_REPLIES].length > 0 && (
-            <>
-                {showRepliesToggle ? (
+            // <>
+            //     {showRepliesToggle && (
                     <>
-                        <button
-                            className='showHideRepliesButton'
-                            onClick={updateShowRepliesToggle}
-                        >
-                            Hide Replies <i className="fa fa-light fa-angle-up"></i>
-                        </button>
                         {comment[COMMENT_REPLIES].map((reply) => (
                             <div className='nestedComment'>
                                 <CommentWithReply 
                                     comment={reply}
+                                    commentAuthor={comment[USER_NAME]}
                                 />
                             </div>
                         ))}
                     </>
-                ):(
-                    <button
-                        className='showHideRepliesButton'
-                        onClick={updateShowRepliesToggle}
-                    >
-                        Show Replies <i className="fa fa-light fa-angle-down"></i>
-                    </button>
-                )}
-            </>
+            //     )}
+            // </>
         )}
         
-    </div>
+    </>
   )
 }
 

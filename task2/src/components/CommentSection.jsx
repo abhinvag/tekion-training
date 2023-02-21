@@ -1,6 +1,5 @@
 import React, {useState} from 'react'
 import CommentWithReply from './CommentWithReply';
-import ReplyButton from './ReplyButton';
 import SimpleComment from './SimpleComment';
 import {COMMENT_ID, COMMENT_REPLIES, DATE } from '../constants';
 import { AddCommentContainer } from '../containers/AddCommentContainer';
@@ -34,16 +33,15 @@ function CommentSection({comments=[]}) {
                 {comments.map((comment) => (
                     <>
                         {comment[COMMENT_REPLIES].length ===  0 ? (
-                            <div style={{width: "100%"}}>
+                            <div className='comment'>
                                 <SimpleComment
                                     comment = {comment}
                                     date = {comment[DATE]}
-                                />
-                                <ReplyButton
                                     updateShowAddReplyToggle={updateShowAddReplyToggle}
                                     setCurrCommentID={setCurrCommentID}
-                                    comment={comment}
+                                    showRepliesButton={false}
                                 />
+                            
                                 {(showAddReplyToggle && comment[COMMENT_ID] == currCommentID) && (
                                     <AddCommentContainer
                                         type="reply"

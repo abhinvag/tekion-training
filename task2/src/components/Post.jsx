@@ -14,8 +14,8 @@ function Post({posts = [], currPostID = ""}) {
   return (
     <div className="mainDiv">
       <img className="mainDiv_image" src={currPost?.[POST_IMAGE_URL]}></img>
-      <AddCommentContainer type="comment" />
       <CommentSection comments={currPost?.[POST_COMMENTS]} />
+      <AddCommentContainer type="comment" />
     </div>
   )
 }

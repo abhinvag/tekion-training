@@ -73,80 +73,71 @@ function AddComment({
             }
             setCommentState(COMMENT)
         }
-        else{
-            //console.log(validationErrorArray);
-        }
-    }
-
-    const handleCancel = () => {
-        updateShowAddReplyToggle(false)
     }
 
   return (
-    <div className="addCommentDiv">
-        <input 
-            id="userName" 
-            type="text" 
-            placeholder="Enter Name" 
-            name={USER_NAME} 
-            value={commentState[USER_NAME]}
-            onChange={updateComment}
-            onFocus={handleFocus}
-        />
-        {validationErrorObj[USER_NAME] != "" && (
-            <span className='error'>{validationErrorObj[USER_NAME]}</span>
-        )}
-        <input 
-            id="userImage" 
-            type="text" 
-            placeholder="Enter Image URL" 
-            name={USER_IMAGE} 
-            value={commentState[USER_IMAGE]}
-            onChange={updateComment}
-            onFocus={handleFocus}
-        />
-        {validationErrorObj[USER_IMAGE] != "" && (
-            <span className='error'>{validationErrorObj[USER_IMAGE]}</span>
-        )}
-        <textarea 
-            id="userComment" 
-            rows="4" cols="50" 
-            placeholder="Enter Comment" 
-            name={USER_COMMENT} 
-            value={commentState[USER_COMMENT]}
-            onChange={updateComment}
-            onFocus={handleFocus}
-        />
-        {validationErrorObj[USER_COMMENT] != "" && (
-            <span className='error'>{validationErrorObj[USER_COMMENT]}</span>
-        )}
-        {type == "reply" ? (
-            <div>
+    <div 
+        className= {type == "reply" ? "addReplyDiv addCommentDiv" : "addCommentDiv"}
+    >
+        <div className='addCommentDiv-left'>
+            <input 
+                id="userName" 
+                type="text" 
+                placeholder="Add a name .." 
+                name={USER_NAME} 
+                value={commentState[USER_NAME]}
+                onChange={updateComment}
+                onFocus={handleFocus}
+            />
+            {validationErrorObj[USER_NAME] != "" && (
+                <span className='error'>{validationErrorObj[USER_NAME]}</span>
+            )}
+            <input 
+                id="userImage" 
+                type="text" 
+                placeholder="Add a image url .." 
+                name={USER_IMAGE} 
+                value={commentState[USER_IMAGE]}
+                onChange={updateComment}
+                onFocus={handleFocus}
+            />
+            {validationErrorObj[USER_IMAGE] != "" && (
+                <span className='error'>{validationErrorObj[USER_IMAGE]}</span>
+            )}
+            <textarea 
+                id="userComment" 
+                rows="4" cols="50" 
+                placeholder="Add a comment .." 
+                name={USER_COMMENT} 
+                value={commentState[USER_COMMENT]}
+                onChange={updateComment}
+                onFocus={handleFocus}
+            />
+            {validationErrorObj[USER_COMMENT] != "" && (
+                <span className='error'>{validationErrorObj[USER_COMMENT]}</span>
+            )}
+        </div>
+        <div className='addCommentDiv-right'>
+            {type == "reply" ? (
+                <div>
+                    <button 
+                        className="addCommentButton" 
+                        type="submit" 
+                        onClick={addNewComment}
+                    >
+                        <b>REPLY</b>
+                    </button>
+                </div>
+            ):(
                 <button 
                     className="addCommentButton" 
                     type="submit" 
                     onClick={addNewComment}
                 >
-                    Reply
+                    <b>SEND</b>
                 </button>
-                <button 
-                    className="addCommentButton cancelButton" 
-                    type="submit" 
-                    onClick={handleCancel}
-                >
-                    Cancel
-                </button>
-            </div>
-        ):(
-            <button 
-                className="addCommentButton" 
-                type="submit" 
-                onClick={addNewComment}
-            >
-                Comment
-            </button>
-        )}
-       
+            )}
+        </div>
     </div>
   )
 }

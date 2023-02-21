@@ -1,3 +1,8 @@
+*{
+  box-sizing: border-box;
+  font-size: 11px;
+}
+
 body {
   margin: 0;
   font-family: 'Roboto', sans-serif;
@@ -12,31 +17,38 @@ code {
 }
 
 button{
-  margin-top: 5px;
+  margin-top: 0.5rem;
   background-color: #f8f9fa;
   border-color: transparent;
   cursor: pointer;
 }
 
 i{
-  font-size: 15px;
+  font-size: 1.5rem;
 }
 
 input, textarea{
-  margin-top: 10px;
-  padding: 10px;
-  border: none;
+  margin-top: 1rem;
+  padding: 1rem;
+  border: solid;
+  border-color: rgba(128, 128, 128, 0.198);
+  border-radius: 0.5rem;
+}
+
+textarea::placeholder{
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
 }
 
 .main_heading{
   margin: 0;
-  padding: 10px;
-  background-color: rgba(0, 128, 0, 0.6);
+  padding: 1rem;
+  background-color: rgba(75, 86, 210, 0.8);
   color: white
 }
 
 .wall{
-  margin-top: 50px;
+  margin-top: 5rem;
   display: flex;
 }
 
@@ -51,18 +63,18 @@ input, textarea{
 
 .gallery_image{
   width: 50%;
-  height: 100px;
+  height: 10rem;
   border-radius: 2%;
-  margin-bottom: 10px;
+  margin-bottom: 1rem;
   cursor: pointer;
   transition-duration: 300ms;
 }
 
 .gallery_image_selected{
   border-style: solid;
-  border-color: rgba(0, 128, 0, 0.6);
-  border-width: 2px;
-  padding: 10px;
+  border-color: rgba(75, 86, 210, 0.8);
+  border-width: 0.2rem;
+  padding: 1rem;
 }
 
 .addPostDiv{
@@ -70,12 +82,12 @@ input, textarea{
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 10px;
+  margin-bottom: 1rem;
 }
 
 .addPostDiv h2{
   margin-top: 0;
-  font-size: 18px;
+  font-size: 1.8rem;
 }
 
 .addPostDiv input{
@@ -93,39 +105,55 @@ input, textarea{
 }
 
 .mainDiv_image{
-  height: 400px;
+  height: 40rem;
   width: 100%;
   border-radius: 2%;
+  margin-bottom: 1rem;
 }
 
 .addCommentDiv{
   display: flex;
-  flex-direction: column;
-  margin: 10px auto;
+  background-color: white;
+  border-radius: 1rem;
+  width: 100%;
+  padding: 2rem;
+  margin-top: 2rem;
+}
+
+.addReplyDiv{
+  margin-top: 1rem;
+}
+
+.addCommentDiv-left{
+  width: 85%;
+}
+
+.addCommentDiv-right{
+  width: 15%;
+  text-align: center;
+}
+
+.addCommentDiv-left input{
   width: 100%;
 }
 
+.addCommentDiv-left textarea{
+  width: 100% !important;
+}
+
 .addCommentButton{
-  width: 100px;
-  background-color: rgba(0, 128, 0, 0.6) !important;
+  background-color: rgba(75, 86, 210, 0.8) !important;
   color: white;
   transition-duration: 500ms;
-  border-radius: 5%;
-  margin-top: 10px;
-  padding: 10px;
+  border-radius: 0.5rem;
+  margin-top: 1rem;
+  padding: 1rem 20%;
+  font-size: 70%;
+  margin-left: 1rem;
 }
 
 .addCommentButton:hover{
-  background-color: rgba(0, 128, 0, 0.8) !important;
-}
-
-.cancelButton{
-  margin-left: 5px;
-  background-color: rgba(255, 0, 0, 0.545) !important;
-}
-
-.cancelButton:hover{
-  background-color: rgba(255, 0, 0, 0.767) !important;
+  background-color: rgba(75, 86, 210, 0.3) !important;
 }
 
 #userName-reply, #userImage-reply, #userComment-reply {
@@ -134,84 +162,215 @@ input, textarea{
 }
 
 .showHideCommentsButton{
-  margin: 10px 0 10px 0;
+  margin-top: 1rem;
   width: 100%;
   cursor: pointer;
 }
 
 #wholeCommentsDiv{
   background-color: white;
-  padding: 0 20px 20px 20px;
+  padding: 0 2rem 2rem 2rem;
   border-radius: 2%;
   width: 95%;
+}
+
+.comment{
+  background-color: white;
+  padding: 2rem;
+  margin-top: 2rem;
+  width: 100%;
+  border-radius: 1rem;
 }
 
 .commentWithReply{
   width: 100%;
 }
 
-.commentSection_userCommentDiv{
+.userCommentDiv{
   display: flex;
-  align-items: center;
   width: 100%;
-  margin-top: 20px;
-  /* border-bottom: solid;
-  border-width: 1px;
-  border-color: gray;
-  padding-bottom: 5px; */
+}
+
+.userCommentDiv-left{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(75, 86, 210, 0.1);
+  margin-right: 1rem;
+  padding: 0.2rem;
+  border-radius: 0.7rem;
+  height: 8rem;
+  width: 3rem;
+}
+
+.userCommentDiv-left button{
+  background: transparent;
+  color: rgba(75, 86, 210, 0.4);
+  font-size: 2rem;
+  margin-top: 0;
+  transition-duration: 300ms;
+}
+
+.userCommentDiv-left span{
+  color: rgba(75, 86, 210, 0.8);
+}
+
+.userCommentDiv-left button:hover{
+  color: rgba(75, 86, 210, 0.8);
+}
+
+.userCommentDiv-right{
+  width: 94%;
 }
 
 .userCommentDiv_userImage{
   border-radius: 100%;
-  width: 50px;
-  height: 50px;
+  width: 2.5rem;
+  height: 2.5rem;
+  position: relative;
+  bottom: 0.2rem;
 }
 
-.userCommentDiv_detailsDiv{
-  margin-left: 10px;
-  width: 100%;
-}
-
-.userCommentDiv_detailsDiv_personal{
+.userCommentDiv-top{
   display: flex;
   justify-content: space-between;
   width: 100%;
+  margin-bottom: 1rem;
 }
 
-.userCommentDiv_detailsDiv_personal p{
-  margin-top: 1px;
-  margin-bottom: 5px
+.userCommentDiv-top-details{
+  display: flex;
 }
 
-.userCommentDiv_detailsDiv_comment{
-  font-size: 15px;
+.userCommentDiv-top p{
+  margin: 0 0 0 1.5rem;
+}
+
+.userCommentDiv-comment{
+  font-size: 1.5rem;
+}
+
+.updateCommentButtonDiv{
+  width: 100%;
+}
+
+.updateCommentTextarea{
+  margin-top: 0;
+  width: 100%;
+}
+
+.updateCommentButton{
+  background-color: rgba(75, 86, 210, 0.8) !important;
+  color: white;
+  transition-duration: 500ms;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  float: right;
+}
+
+.updateCommentButton:hover{
+  background-color: rgba(75, 86, 210, 0.3) !important;
+}
+
+.youdiv{
+  background-color: rgba(75, 86, 210);
+  color: white;
+  margin-left: 0.5rem;
+  padding: 0 0.4rem;
+}
+
+.replyButton, .editButton, .deleteButton{
+  margin-top: 0;
+  background: transparent;
+  color: rgba(75, 86, 210, 0.8);
+  position: relative;
+  bottom: 0.4rem;
+  transition-duration: 300ms;
+}
+
+.deleteButton{
+  color: red;
+}
+
+.replyButton:hover, .editButton:hover{
+  color: rgba(75, 86, 210, 0.3);
+}
+
+.deleteButton:hover{
+  color: rgba(255, 0, 0, 0.3);
 }
 
 .nestedComment{
-  margin-left: 10%;
-  width: auto;
+  margin-left: 5%;
+  padding-left: 5%;
+  width: 95%;
+  border-left: solid;
+  border-width: 0.2rem;
+  border-color: rgba(128, 128, 128, 0.167);
+  margin-top: 2rem;
+}
+
+.nestedComment > *:first-child
+{
+  margin-top: 0;
 }
 
 .error {
   color: rgba(255, 0, 0, 1);
-  margin: 5px 0;
-  font-size: 15px;
+  margin: 0.5rem 0;
+  font-size: 1.5rem;
 }
 
 .makeWhite {
   background-color: white;
-  padding: 10px;
+  padding: 1rem;
   border-radius: 2%;
 }
 
-/* .showHideRepliesButton{
-  margin-left: 9%;
-} */
+.showHideRepliesButton{
+  background: transparent;
+  align-self: flex-start;
+  padding-left: 0;
+  border-left: 0;
+}
 
-@media only screen and (max-width: 1000px) {
+.deleteModal{
+  background-color: white;
+  border-radius: 1rem;
+  padding: 2rem;
+  width: 19%;
+  z-index: 999;
+}
+
+.deleteModal p{
+  margin: 0;
+}
+
+.deleteModal-buttonsDiv{
+  margin-top: 1rem;
+}
+
+.deleteModal-buttonsDiv-cancel, .deleteModal-buttonsDiv-delete{
+  padding: 1rem;
+  border-radius: 5rem;
+  color: white;
+}
+
+.deleteModal-buttonsDiv-cancel{
+  background-color: gray;
+}
+
+.deleteModal-buttonsDiv-delete{
+  margin-left: 1rem;
+  background-color: red;
+  opacity: 0.8;
+}
+
+@media only screen and (max-width: 1170px) {
   .mainDiv{
-      width: 60%;
+      width: 70%;
   }
+  
 }
 
 @media only screen and (max-width: 800px) {
@@ -225,7 +384,7 @@ input, textarea{
 
   .gallery_image{
     margin-bottom: 0;
-    margin-right: 10px;
+    margin-right: 1rem;
   }
 
   .wall{
@@ -240,14 +399,61 @@ input, textarea{
 
   .addPostDiv{
     width: 80%;
-    margin-top: 10px;
+    margin-top: 1rem;
   }
 }
 
 @media only screen and (max-width: 600px) {
 
+  .userCommentDiv{
+    flex-direction: column-reverse;
+    position: relative;
+  }
+
+  .userCommentDiv-right{
+    width: 100%;
+  }
+
+  .userCommentDiv-left{
+    flex-direction: row;
+    margin-top: 1rem;
+    height: auto;
+    width: 7rem;
+  }
+
+  .replyButton, .editButton, .deleteButton{
+    position: absolute;
+    right: 1rem;
+    bottom: 0.5rem;
+  }
+
+  .deleteButton{
+    right: 7rem;
+  }
+
+  .addCommentDiv{
+    flex-direction: column;
+  }
+
+  .addCommentDiv-left{
+    width: 100%;
+  }
+  
+  .addCommentDiv-right{
+    width: 100%;
+    text-align: right;
+  }
+
+  .addCommentButton{
+    padding: 1rem;
+  }
+
   .mainDiv, .gallery_div, .addPostDiv{
       width: 90%;
+  }
+
+  .deleteModal{
+    width: 90%;
   }
 }
 

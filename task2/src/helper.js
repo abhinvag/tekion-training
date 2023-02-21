@@ -3,7 +3,7 @@ import { DATE, COMMENT_ID, MONTHS_ARRAY, POST_BY, POST_COMMENTS, POST_ID, POST_I
 
 export const calculateDate = () => {
     let date = new Date();
-    let currentDate = date.getDate() + " " + MONTHS_ARRAY[date.getUTCMonth()] + " " + date.getFullYear() + ", " + date.getHours() + ":" + date.getMinutes();
+    let currentDate = date.getDate() + " " + MONTHS_ARRAY[date.getUTCMonth()];
     return currentDate
 }
 

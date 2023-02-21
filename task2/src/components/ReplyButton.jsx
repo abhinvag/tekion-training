@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { COMMENT, COMMENT_ID } from '../constants'
 
 function ReplyButton({
@@ -7,18 +7,20 @@ function ReplyButton({
   comment=COMMENT
 }) {
 
+  const [toggle, setToggle] = useState(true)
+
     const handleClick = () => {
-        updateShowAddReplyToggle(true)
-        //console.log(comment[COMMENT_ID]);
+        updateShowAddReplyToggle(toggle)
         setCurrCommentID(comment[COMMENT_ID])
+        setToggle(!toggle)
     }
 
   return (
     <button
-        className='showHideRepliesButton replyButton'
+        className='replyButton'
         onClick={handleClick}
     >
-        Reply <i className="fa fa-solid fa-reply"></i>
+        <i className="fa fa-solid fa-reply"></i> Reply 
     </button>
   )
 }
