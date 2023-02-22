@@ -5,7 +5,8 @@ import { AddCommentContainer } from '../containers/AddCommentContainer';
 
 function CommentWithReply({
     comment=COMMENT,
-    commentAuthor=""
+    commentAuthor="",
+    updateModal = () => {}
 }) {
 
     const [showRepliesToggle, setShowRepliesToggle] = useState(false);
@@ -31,6 +32,7 @@ function CommentWithReply({
                 showRepliesToggle={showRepliesToggle}
                 updateShowRepliesToggle={updateShowRepliesToggle}
                 commentAuthor={commentAuthor}
+                updateModal={updateModal}
             />
         </div>
         {(showAddReplyToggle && comment[COMMENT_ID] == currCommentID) && (
@@ -49,6 +51,7 @@ function CommentWithReply({
                                 <CommentWithReply 
                                     comment={reply}
                                     commentAuthor={comment[USER_NAME]}
+                                    updateModal={updateModal}
                                 />
                             </div>
                         ))}

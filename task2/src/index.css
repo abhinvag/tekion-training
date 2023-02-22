@@ -1,6 +1,6 @@
 *{
   box-sizing: border-box;
-  font-size: 11px;
+  font-size: 13px;
 }
 
 body {
@@ -44,7 +44,8 @@ textarea::placeholder{
   margin: 0;
   padding: 1rem;
   background-color: rgba(75, 86, 210, 0.8);
-  color: white
+  color: white;
+  font-size: 1.5rem;
 }
 
 .wall{
@@ -105,7 +106,7 @@ textarea::placeholder{
 }
 
 .mainDiv_image{
-  height: 40rem;
+  height: 400px;
   width: 100%;
   border-radius: 2%;
   margin-bottom: 1rem;
@@ -199,7 +200,7 @@ textarea::placeholder{
   margin-right: 1rem;
   padding: 0.2rem;
   border-radius: 0.7rem;
-  height: 8rem;
+  height: 7rem;
   width: 3rem;
 }
 
@@ -338,7 +339,7 @@ textarea::placeholder{
   background-color: white;
   border-radius: 1rem;
   padding: 2rem;
-  width: 19%;
+  width: 27%;
   z-index: 999;
 }
 
@@ -369,6 +370,10 @@ textarea::placeholder{
 @media only screen and (max-width: 1170px) {
   .mainDiv{
       width: 70%;
+  }
+
+  .deleteModal{
+    width: 40%;
   }
   
 }
@@ -401,6 +406,10 @@ textarea::placeholder{
     width: 80%;
     margin-top: 1rem;
   }
+
+  .deleteModal{
+    width: 50%;
+  }
 }
 
 @media only screen and (max-width: 600px) {
@@ -418,7 +427,7 @@ textarea::placeholder{
     flex-direction: row;
     margin-top: 1rem;
     height: auto;
-    width: 7rem;
+    width: 6rem;
   }
 
   .replyButton, .editButton, .deleteButton{
@@ -453,7 +462,7 @@ textarea::placeholder{
   }
 
   .deleteModal{
-    width: 90%;
+    width: 85%;
   }
 }
 

@@ -3,11 +3,14 @@ import CommentWithReply from './CommentWithReply';
 import SimpleComment from './SimpleComment';
 import {COMMENT_ID, COMMENT_REPLIES, DATE } from '../constants';
 import { AddCommentContainer } from '../containers/AddCommentContainer';
+import ModalContainer from './ModalContainer';
+import DeleteModal from './DeleteModal';
 
 function CommentSection({comments=[]}) {
 
     const [showCommentsToggle, setShowCommentsToggle] = useState(false);
     const [showAddReplyToggle, setShowAddReplyToggle] = useState(false);
+    const [showModal, setShowModal] = useState(false);
     const [currCommentID, setCurrCommentID] = useState();
 
     const updateShowAddReplyToggle = (state) => {
@@ -17,6 +20,10 @@ function CommentSection({comments=[]}) {
     const updateShowCommentsToggle = () => {
         setShowCommentsToggle(!showCommentsToggle);
     }
+
+    const updateModal = () => {
+        setShowModal(!showModal);
+      }
     
 
   return (
@@ -40,6 +47,7 @@ function CommentSection({comments=[]}) {
                                     updateShowAddReplyToggle={updateShowAddReplyToggle}
                                     setCurrCommentID={setCurrCommentID}
                                     showRepliesButton={false}
+                                    updateModal={updateModal}
                                 />
                             
                                 {(showAddReplyToggle && comment[COMMENT_ID] == currCommentID) && (
@@ -54,6 +62,7 @@ function CommentSection({comments=[]}) {
                             <>
                                 <CommentWithReply 
                                     comment={comment}
+                                    updateModal={updateModal}
                                 />
                             </>
                         )}
@@ -68,6 +77,13 @@ function CommentSection({comments=[]}) {
             >
                 Show Comments <i className="fa fa-light fa-angle-down"></i>
             </a>
+        )}
+        {showModal && (
+            <ModalContainer>
+                <DeleteModal
+                    updateModal={updateModal}
+                />
+            </ModalContainer>
         )}
     </>
   )

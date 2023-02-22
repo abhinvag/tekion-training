@@ -11,17 +11,13 @@ function SimpleComment({
   showRepliesButton = false,
   showRepliesToggle = false,
   updateShowRepliesToggle = () => {},
-  commentAuthor=""
+  commentAuthor="",
+  updateModal = () => {}
 }) {
 
   const currUser = "Jeremy Renner"; 
 
-  const [showModal, setShowModal] = useState(false);
   const [editComment, setEditComment] = useState(false)
-
-  const updateModal = () => {
-    setShowModal(!showModal);
-  }
 
   const updateEditComment = () => {
     setEditComment(!editComment)
@@ -53,13 +49,6 @@ function SimpleComment({
                 >
                     <i className="fa fa-solid fa-trash"></i> Delete 
                 </button>
-                {showModal && (
-                  <ModalContainer>
-                    <DeleteModal
-                      updateModal={updateModal}
-                    />
-                  </ModalContainer>
-                )}
                 <button
                     className='editButton'
                     onClick={updateEditComment}
