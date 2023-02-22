@@ -1,17 +1,19 @@
 import React, {useState} from 'react'
-import SimpleComment from './SimpleComment'
 import {COMMENT_ID, COMMENT, COMMENT_REPLIES, USER_NAME} from '../constants';
 import { AddCommentContainer } from '../containers/AddCommentContainer';
+import { SimpleCommentContainer } from '../containers/SimpleCommentContainer';
 
 function CommentWithReply({
     comment=COMMENT,
     commentAuthor="",
-    updateModal = () => {}
+    updateModal = () => {},
+    currCommentID="",
+    setCurrCommentID = () => {},
+    parentCommentId="root"
 }) {
 
     const [showRepliesToggle, setShowRepliesToggle] = useState(false);
     const [showAddReplyToggle, setShowAddReplyToggle] = useState(false);
-    const [currCommentID, setCurrCommentID] = useState();
 
     const updateShowAddReplyToggle = (state) => {
         setShowAddReplyToggle(state);
@@ -24,7 +26,7 @@ function CommentWithReply({
   return (
     <>
         <div className='comment'>
-            <SimpleComment 
+            <SimpleCommentContainer 
                 comment={comment}
                 updateShowAddReplyToggle={updateShowAddReplyToggle}
                 setCurrCommentID={setCurrCommentID}
@@ -33,6 +35,7 @@ function CommentWithReply({
                 updateShowRepliesToggle={updateShowRepliesToggle}
                 commentAuthor={commentAuthor}
                 updateModal={updateModal}
+                parentCommentId={parentCommentId}
             />
         </div>
         {(showAddReplyToggle && comment[COMMENT_ID] == currCommentID) && (
@@ -52,6 +55,9 @@ function CommentWithReply({
                                     comment={reply}
                                     commentAuthor={comment[USER_NAME]}
                                     updateModal={updateModal}
+                                    currCommentID={currCommentID}
+                                    setCurrCommentID={setCurrCommentID}
+                                    parentCommentId={comment[COMMENT_ID]}
                                 />
                             </div>
                         ))}

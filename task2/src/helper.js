@@ -1,5 +1,5 @@
 import { nanoid } from "nanoid";
-import { DATE, COMMENT_ID, MONTHS_ARRAY, POST_BY, POST_COMMENTS, POST_ID, POST_IMAGE_URL, COMMENT_REPLIES } from "./constants";
+import { DATE, COMMENT_ID, MONTHS_ARRAY, POST_BY, POST_COMMENTS, POST_ID, POST_IMAGE_URL, COMMENT_REPLIES, VOTES } from "./constants";
 
 export const calculateDate = () => {
     let date = new Date();
@@ -7,31 +7,19 @@ export const calculateDate = () => {
     return currentDate
 }
 
-const findCommentAndPushReplyHelper = (id, reply, comments) => {
+export const findCommentAndReturn = (id, comments) => {
 
-    comments.map((comment) => {
-        if(comment[COMMENT_ID] == id){
-            comment[COMMENT_REPLIES].push(reply);
-            return true;
+    for(let i=0;i<comments.length;i++){
+        if(comments[i][COMMENT_ID] === id){
+            return comments[i];
         }
-        else if(comment[COMMENT_REPLIES].length != 0){
-            let temp = findCommentAndPushReply(id, reply, comment[COMMENT_REPLIES]);
-            if(temp) return true;
+        else if(comments[i][COMMENT_REPLIES].length != 0){
+            let temp = findCommentAndReturn(id, comments[i][COMMENT_REPLIES]);
+            if(temp != null) return temp;
         }
-    });
+    }
 
-    return false;
-
-}
-
-export const findCommentAndPushReply = (id, reply, comments) => {
-
-    let newComments = [...comments];
-
-    findCommentAndPushReplyHelper(id, reply, newComments);
-
-    return newComments;
-
+    return null;
 }
 
 export const checkImage = (url) => {
@@ -68,7 +56,8 @@ export const createComment = (comment) => {
     return {
         ...comment,
         [COMMENT_ID]: nanoid(),
-        [DATE]: calculateDate()
+        [DATE]: calculateDate(),
+        [VOTES]: 0
     }
 }
 

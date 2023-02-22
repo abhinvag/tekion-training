@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import {USER_NAME, USER_IMAGE, USER_COMMENT, DATE, COMMENT } from '../constants';
+import {USER_NAME, USER_IMAGE, USER_COMMENT, DATE, COMMENT, VOTES, INCREMENT_VOTES, DECREMENT_VOTES, COMMENT_ID } from '../constants';
 import DeleteModal from './DeleteModal';
 import ModalContainer from './ModalContainer';
 import ReplyButton from './ReplyButton';
@@ -12,23 +12,62 @@ function SimpleComment({
   showRepliesToggle = false,
   updateShowRepliesToggle = () => {},
   commentAuthor="",
-  updateModal = () => {}
+  updateModal = () => {},
+  incrementVotes = () => {},
+  decrementVotes = () => {},
+  editCommentRedux = () => {},
+  currPostID = "",
+  parentCommentId="root"
 }) {
 
-  const currUser = "Jeremy Renner"; 
+  const currUser = "Robert Downey Jr."; 
 
   const [editComment, setEditComment] = useState(false)
+  const [newComment, setNewComment] = useState();
 
-  const updateEditComment = () => {
+  const updateEditComment = (comment) => () => {
+    setEditComment(!editComment);
+    setNewComment(comment)
+  }
+
+  const handleIncrementDecrement = (id, type) => () => {
+    if(type == INCREMENT_VOTES){
+      incrementVotes(currPostID, id)
+    }
+    else if(type == DECREMENT_VOTES){
+      decrementVotes(currPostID, id)
+    }
+  }
+
+  const handleDeleteClick = (commentId) => () => {
+    updateModal();
+    setCurrCommentID({parentCommentId, [COMMENT_ID]: commentId});
+  }
+
+  const handleNewCommentEdit = (e) => {
+    setNewComment(e.target.value);
+  }
+
+  const handleCommentUpdate = () => {
+    console.log(newComment);
+    editCommentRedux(currPostID, comment[COMMENT_ID], newComment);
     setEditComment(!editComment)
   }
 
   return (
     <div className='userCommentDiv'>
         <div className='userCommentDiv-left'>
-          <button>+</button>
-          <span><b>5</b></span>
-          <button>-</button>
+          <button
+            onClick={handleIncrementDecrement(comment[COMMENT_ID], INCREMENT_VOTES)}
+          >
+            +
+          </button>
+          <span><b>{comment[VOTES]}</b></span>
+          <button
+            onClick={handleIncrementDecrement(comment[COMMENT_ID], DECREMENT_VOTES)}
+          >
+            -
+          </button>
         </div>
         <div className='userCommentDiv-right'>
           <div className="userCommentDiv-top">
@@ -44,14 +83,14 @@ function SimpleComment({
               <div>
                 <button
                     className='deleteButton'
-                    onClick={updateModal}
+                    onClick={handleDeleteClick(comment[COMMENT_ID])}
                   
                 >
                     <i className="fa fa-solid fa-trash"></i> Delete 
                 </button>
                 <button
                     className='editButton'
-                    onClick={updateEditComment}
+                    onClick={updateEditComment(comment[USER_COMMENT])}
                 >
                     <i className="fa fa-solid fa-pen"></i> Edit 
                 </button>
@@ -72,13 +111,15 @@ function SimpleComment({
                   <textarea 
                     id="userComment" 
                     rows="4" cols="50" 
-                    value={comment[USER_COMMENT]}
+                    value={newComment}
                     className="updateCommentTextarea"
+                    onChange={handleNewCommentEdit}
                   />
                   <div className='updateCommentButtonDiv'>
                     <button 
                       className="updateCommentButton" 
                       type="submit" 
+                      onClick={handleCommentUpdate}
                     >
                       <b>UPDATE</b>
                     </button>

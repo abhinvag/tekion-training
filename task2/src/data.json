@@ -10,6 +10,7 @@
                 "userImage": "https://media.npr.org/assets/img/2022/11/08/ap22312071681283-0d9c328f69a7c7f15320e8750d6ea447532dff66.jpg",
                 "date": "10 Jan",
                 "userComment": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras finibus maximus ornare. Sed non accumsan est, ac efficitur nibh. Suspendisse in enim dignissim lorem porta auctor non eu eros. Sed porta libero quis lacinia ultricies. Aliquam nec neque feugiat, auctor purus in, molestie diam.",
+                "votes": 5,
                 "commentReplies": [
                     {
                         "commentID": "askdnasjd",
@@ -17,6 +18,7 @@
                         "userImage": "https://e00-marca.uecdn.es/assets/multimedia/imagenes/2023/01/12/16735402991293.jpg",
                         "date": "16 Jan",
                         "userComment": "Hey Chris !! How are you ??",
+                        "votes": 4,
                         "commentReplies": []
                     }
                 ]
@@ -27,6 +29,7 @@
                 "userImage": "https://e00-marca.uecdn.es/assets/multimedia/imagenes/2023/01/12/16735402991293.jpg",
                 "date": "16 Jan",
                 "userComment": "I am gonna copy this design for the new Avengers HQ.",
+                "votes": 10,
                 "commentReplies": [
                     {
                         "commentID": "jcbsjcbwj",
@@ -34,6 +37,7 @@
                         "userImage": "https://media.cnn.com/api/v1/images/stellar/prod/230102115303-digital-jeremy-renner.jpg?c=original",
                         "date": "16 Jan",
                         "userComment": "Hey Robert",
+                        "votes": 7,
                         "commentReplies": [
                             {
                                 "commentID": "msnbcawje",
@@ -41,6 +45,7 @@
                                 "userImage": "https://e00-marca.uecdn.es/assets/multimedia/imagenes/2023/01/12/16735402991293.jpg",
                                 "date": "16 Jan",
                                 "userComment": "Hey",
+                                "votes": 2,
                                 "commentReplies": []
                             }
                         ]

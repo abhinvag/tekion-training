@@ -1,8 +1,18 @@
 import React from 'react'
+import { COMMENT_ID } from '../constants';
 
 function DeleteModal({
-    updateModal = () => {}
+    updateModal = () => {},
+    currCommentID="",
+    currPostID = "",
+    deleteComment = () => {}
 }) {
+
+    const handleDelete = () => {
+        deleteComment(currPostID, currCommentID.parentCommentId, currCommentID[COMMENT_ID]);
+        updateModal()
+    }
+
   return (
     <div className='deleteModal'>
         <h3>Delete comment</h3>
@@ -15,8 +25,11 @@ function DeleteModal({
                 NO, CANCEL
             </button>
             <button
+                onClick={handleDelete}
                 className='deleteModal-buttonsDiv-delete'
-            >YES, DELETE</button>
+            >
+                YES, DELETE
+            </button>
         </div>
     </div>
   )

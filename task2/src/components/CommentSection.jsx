@@ -1,10 +1,11 @@
 import React, {useState} from 'react'
 import CommentWithReply from './CommentWithReply';
-import SimpleComment from './SimpleComment';
 import {COMMENT_ID, COMMENT_REPLIES, DATE } from '../constants';
 import { AddCommentContainer } from '../containers/AddCommentContainer';
 import ModalContainer from './ModalContainer';
 import DeleteModal from './DeleteModal';
+import { SimpleCommentContainer } from '../containers/SimpleCommentContainer';
+import {DeleteModalContainer} from "../containers/DeleteModalContainer"
 
 function CommentSection({comments=[]}) {
 
@@ -23,7 +24,7 @@ function CommentSection({comments=[]}) {
 
     const updateModal = () => {
         setShowModal(!showModal);
-      }
+    }
     
 
   return (
@@ -41,7 +42,7 @@ function CommentSection({comments=[]}) {
                     <>
                         {comment[COMMENT_REPLIES].length ===  0 ? (
                             <div className='comment'>
-                                <SimpleComment
+                                <SimpleCommentContainer
                                     comment = {comment}
                                     date = {comment[DATE]}
                                     updateShowAddReplyToggle={updateShowAddReplyToggle}
@@ -63,6 +64,8 @@ function CommentSection({comments=[]}) {
                                 <CommentWithReply 
                                     comment={comment}
                                     updateModal={updateModal}
+                                    currCommentID={currCommentID}
+                                    setCurrCommentID={setCurrCommentID}
                                 />
                             </>
                         )}
@@ -80,8 +83,9 @@ function CommentSection({comments=[]}) {
         )}
         {showModal && (
             <ModalContainer>
-                <DeleteModal
+                <DeleteModalContainer
                     updateModal={updateModal}
+                    currCommentID={currCommentID}
                 />
             </ModalContainer>
         )}

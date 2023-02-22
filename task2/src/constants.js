@@ -7,6 +7,7 @@ export const USER_IMAGE = "userImage";
 export const USER_COMMENT = "userComment";
 export const DATE = "date";
 export const COMMENT_REPLIES = "commentReplies";
+export const VOTES = "votes";
 
 export const COMMENT = {}
 COMMENT[COMMENT_ID] = "";
@@ -35,6 +36,10 @@ export const ADD_POST = "ADD_POST";
 export const ADD_COMMENT = "ADD_COMMENT"
 export const ADD_REPLY = "ADD_REPLY";
 export const UPDATE_CURRENT_POST_ID = "UPDATE_CURRENT_POST_ID"
+export const INCREMENT_VOTES = "INCREMENT_VOTES";
+export const DECREMENT_VOTES = "DECREMENT_VOTES";
+export const DELETE_COMMENT = "DELETE_COMMENT";
+export const EDIT_COMMENT = "EDIT_COMMENT";
 
 // MISC
 
