@@ -59,13 +59,13 @@ function showComments(){
     newDiv.setAttribute("id", "wholeCommentsDiv")
     comments.map(function(comment){
         if(comment.replies.length === 0){
-            newDiv.append(simpleCommentStructure(comment));
-            let uniqueReplyButton = returnReplyButton(comment)
+            newDiv.append(getSimpleCommentStructure(comment));
+            let uniqueReplyButton = getReplyButton(comment)
             addEventListenerToReplyButton(comment, uniqueReplyButton, newDiv, false, {});
             newDiv.append(uniqueReplyButton);
         }
         else{
-            newDiv.append(handleCommentWithReply(comment));
+            newDiv.append(getCommentWithReply(comment));
         }
     })
     mainDiv.append(newDiv);
@@ -80,7 +80,7 @@ function hideComments(){
     document.getElementById("hideButton").style.display = "none"
 }
 
-function returnReplyButton (comment){
+function getReplyButton (comment){
     const uniqueReplyButtonId = comment.id + "-replyButton";
     let uniqueReplyButton = document.createElement("button");
     uniqueReplyButton.innerHTML = `Reply <i class="fa fa-solid fa-reply"></i>`;
@@ -89,7 +89,7 @@ function returnReplyButton (comment){
     return uniqueReplyButton;
 }
 
-function returnReplyForm (id){
+function getReplyForm (id){
     let newDiv = document.createElement("div");
     newDiv.innerHTML = `
     <div class="addCommentDiv" id="replyDiv">
@@ -98,20 +98,20 @@ function returnReplyForm (id){
         <textarea id="userComment-reply" rows="4" cols="50" placeholder="Enter Reply" name="userComment" oninput="updateNewReply()"></textarea>
         <div>
             <button class="addCommentButton" type="submit" onclick="addNewComment('reply', '${id}')">Reply</button>
-            <button class="addCommentButton cancelButton" type="submit" onclick="removeReplyDiv()">Cancel</button>
+            <button class="addCommentButton cancelButton" type="submit" onclick="deleteReplyDiv()">Cancel</button>
         </div>
     </div>
     `
     return newDiv;
 }
 
-function removeReplyDiv(){
+function deleteReplyDiv(){
     if(document.getElementById("replyDiv") != null) {
         document.getElementById("replyDiv").remove();
     }
 }
 
-function simpleCommentStructure (comment){
+function getSimpleCommentStructure (comment){
     const newDiv = document.createElement("div");
     newDiv.setAttribute("class", "commentSection_userCommentDiv");
     newDiv.innerHTML = `<img class="userCommentDiv_userImage" src=${comment.userImage}>
@@ -128,10 +128,10 @@ function simpleCommentStructure (comment){
     return newDiv;
 }
 
-function handleCommentWithReply(comment){
+function getCommentWithReply(comment){
 
     if(comment.replies.length === 0){
-        return simpleCommentStructure(comment);
+        return getSimpleCommentStructure(comment);
     }
     else{
         const uniqueShowButtonId = comment.id + "-showbutton";
@@ -148,7 +148,7 @@ function handleCommentWithReply(comment){
         uniqueShowButton.setAttribute("id", uniqueShowButtonId);
         uniqueShowButton.setAttribute("class", "showHideRepliesButton")
         uniqueShowButton.addEventListener("click", function(){
-            uniqueDiv.append(nestedCommentStructure(comment));
+            uniqueDiv.append(getNestedCommentStructure(comment));
             uniqueShowButton.style.display = "none"
             uniqueHideButton.style.display = "inline-block";
         })
@@ -166,12 +166,12 @@ function handleCommentWithReply(comment){
 
         const newDiv = document.createElement("div");
 
-        let uniqueReplyButton = returnReplyButton(comment)
+        let uniqueReplyButton = getReplyButton(comment)
         addEventListenerToReplyButton(comment, uniqueReplyButton, newDiv, true, uniqueDiv);
 
         
         newDiv.setAttribute("class", "commentWithReply");
-        newDiv.append(simpleCommentStructure(comment));
+        newDiv.append(getSimpleCommentStructure(comment));
         newDiv.append(uniqueShowButton);
         newDiv.append(uniqueHideButton);
         newDiv.append(uniqueReplyButton);
@@ -181,19 +181,19 @@ function handleCommentWithReply(comment){
     }
 }
 
-function nestedCommentStructure (comment){
+function getNestedCommentStructure (comment){
     let newDiv = document.createElement("div")
     newDiv.setAttribute("class", "nestedComment");
     comment.replies.map(function(reply){
         console.log(reply);
         if(reply.replies.length === 0){
-            newDiv.append(simpleCommentStructure(reply))
-            let uniqueReplyButton = returnReplyButton(reply)
+            newDiv.append(getSimpleCommentStructure(reply))
+            let uniqueReplyButton = getReplyButton(reply)
             addEventListenerToReplyButton(reply, uniqueReplyButton, newDiv, false, {});
             newDiv.append(uniqueReplyButton);
         }
         else{
-            newDiv.append(handleCommentWithReply(reply));
+            newDiv.append(getCommentWithReply(reply));
         }
     })
     return newDiv
@@ -238,7 +238,7 @@ function addNewComment(type, id){
         }
         else{
             findCommentAndPushReply(id.trim(), cloneComment, comments)
-            removeReplyDiv();
+            deleteReplyDiv();
         }
         refreshWholeCommentsDiv();
         newComment.userName = "";
@@ -257,12 +257,12 @@ function refreshWholeCommentsDiv(){
     else document.getElementById("showButton").click();
 }
 
-function addEventListenerToReplyButton(comment, uniqueReplyButton, newDiv, shouldAppend, uniqueDiv){
+function addEventListenerToReplyButton(comment, uniqueReplyButton, newDiv, shouldNotAppend, uniqueDiv){
     
     uniqueReplyButton.addEventListener("click", function(){
-        removeReplyDiv();
-        const replyFormStructure = returnReplyForm(comment.id);
-        if(shouldAppend === false) newDiv.append(replyFormStructure);
+        deleteReplyDiv();
+        const replyFormStructure = getReplyForm(comment.id);
+        if(shouldNotAppend === false) newDiv.append(replyFormStructure);
         else newDiv.insertBefore(replyFormStructure, uniqueDiv);
     })
 
