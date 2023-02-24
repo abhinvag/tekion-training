@@ -4,7 +4,7 @@ Comment section with HTML, CSS and Javascript
 
 ## Screenshots 
 
-[](./screenshots/Home.png)
-[](./screenshots/CommentSection.png)
-[](./screenshots/ReplyBox.png)
+![](https://raw.githubusercontent.com/wraith-0/tekion-training/master/Task%201/screenshots/Home.png)
+![](https://raw.githubusercontent.com/wraith-0/tekion-training/master/Task%201/screenshots/CommentSection.png)
+![](https://raw.githubusercontent.com/wraith-0/tekion-training/master/Task%201/screenshots/ReplyBox.png)
 
