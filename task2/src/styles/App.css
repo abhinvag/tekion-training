@@ -1,0 +1,22 @@
+.main_heading{
+  margin: 0;
+  padding: 0.8rem;
+  background-color: rgba(75, 86, 210, 0.8);
+  color: white;
+  font-size: 1.6rem;
+}
+
+.wall{
+  margin-top: 4rem;
+  display: flex;
+}
+
+@media only screen and (max-width: 1191px) {
+
+  .wall{
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+}

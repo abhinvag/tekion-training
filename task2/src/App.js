@@ -1,4 +1,4 @@
-import './App.css';
+import './styles/App.css';
 import { AddPostContainer } from './containers/AddPostContainer';
 import { GalleryContainer } from './containers/GalleryContainer';
 import { PostContainer } from './containers/PostContainer';

@@ -1,0 +1,79 @@
+button{
+    margin-top: 0.4rem;
+    background-color: #f8f9fa;
+    border-color: transparent;
+    cursor: pointer;
+}
+
+.button--purple{
+    background-color: rgba(75, 86, 210, 0.8) !important;
+    color: white;
+    transition-duration: 500ms;
+    border-radius: 0.4rem;
+    margin-top: 0.8rem;
+    padding: 0.8rem 20%;
+    font-size: 70%;
+    margin-left: 0.8rem;
+}
+
+.button--purple:hover{
+    background-color: rgba(75, 86, 210, 0.3) !important;
+}
+
+.button--gray{
+    background-color: gray;
+}
+
+.button--red{
+    background-color: red;
+}
+
+.button-icon{
+    background: transparent;
+    transition-duration: 300ms;
+}
+
+.button-icon--purple{
+    color: rgba(75, 86, 210, 0.8);
+}
+
+.button-icon--purple:hover{
+    color: rgba(75, 86, 210, 0.3);
+}
+
+.button-icon--red{
+    color: red;
+}
+  
+.button-icon--red:hover{
+    color: rgba(255, 0, 0, 0.3);
+}
+
+/* CUSTOM BUTTON CLASSES */
+
+.replyButton, .editButton, .deleteButton{
+    position: relative;
+    bottom: 0.56rem;
+}
+
+.replyButton{
+    margin-top: 0;
+}
+
+
+@media only screen and (max-width: 855px) {
+
+    .button--purple{
+        padding: 1rem;
+    }
+
+    .replyButton, .editButton, .deleteButton{
+        position: absolute;
+        right: 0.8rem;
+        bottom: 0.4rem;
+    }
+
+    .deleteButton{
+        right: 4rem;
+    }
+}

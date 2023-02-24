@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import {COMMENT, COMMENT_ID, USER_NAME, USER_IMAGE, USER_COMMENT } from '../constants';
-
+import "../styles/addComment.css"
 
 function AddComment({
     type="comment", 
@@ -77,9 +77,9 @@ function AddComment({
 
   return (
     <div 
-        className= {type == "reply" ? "addReplyDiv addCommentDiv" : "addCommentDiv"}
+        className= {type == "reply" ? "addReply addComment" : "addComment"}
     >
-        <div className='addCommentDiv-left'>
+        <div className='addCommentLeft'>
             <input 
                 id="userName" 
                 type="text" 
@@ -88,6 +88,7 @@ function AddComment({
                 value={commentState[USER_NAME]}
                 onChange={updateComment}
                 onFocus={handleFocus}
+                className="addCommentLeft-input"
             />
             {validationErrorObj[USER_NAME] != "" && (
                 <span className='error'>{validationErrorObj[USER_NAME]}</span>
@@ -100,6 +101,7 @@ function AddComment({
                 value={commentState[USER_IMAGE]}
                 onChange={updateComment}
                 onFocus={handleFocus}
+                className="addCommentLeft-input"
             />
             {validationErrorObj[USER_IMAGE] != "" && (
                 <span className='error'>{validationErrorObj[USER_IMAGE]}</span>
@@ -112,16 +114,17 @@ function AddComment({
                 value={commentState[USER_COMMENT]}
                 onChange={updateComment}
                 onFocus={handleFocus}
+                className="addCommentLeft-textarea"
             />
             {validationErrorObj[USER_COMMENT] != "" && (
                 <span className='error'>{validationErrorObj[USER_COMMENT]}</span>
             )}
         </div>
-        <div className='addCommentDiv-right'>
+        <div className='addCommentRight'>
             {type == "reply" ? (
                 <div>
                     <button 
-                        className="addCommentButton" 
+                        className="button--purple" 
                         type="submit" 
                         onClick={addNewComment}
                     >
@@ -130,7 +133,7 @@ function AddComment({
                 </div>
             ):(
                 <button 
-                    className="addCommentButton" 
+                    className="button--purple" 
                     type="submit" 
                     onClick={addNewComment}
                 >

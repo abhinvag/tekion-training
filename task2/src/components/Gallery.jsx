@@ -1,5 +1,6 @@
 import React from 'react'
 import { POST_ID, POST_IMAGE_URL } from '../constants'
+import "../styles/gallery.css"
 
 function Gallery({
     posts = [], 
@@ -12,10 +13,10 @@ function Gallery({
     }
 
   return (
-    <div className='gallery_div'>
+    <div className='gallery'>
         {posts.map((post) => (
             <img 
-                className={post[POST_ID] == currPostID ? 'gallery_image gallery_image_selected' : 'gallery_image' }
+                className={post[POST_ID] == currPostID ? 'gallery-image gallery-image--selected' : 'gallery-image' }
                 src={post[POST_IMAGE_URL]} 
                 onClick={getHandleClick(post[POST_ID])}
             />

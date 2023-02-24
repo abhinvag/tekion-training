@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import CommentSection from './CommentSection';
 import { POST, POST_COMMENTS, POST_IMAGE_URL, POST_ID } from '../constants';
 import { AddCommentContainer } from '../containers/AddCommentContainer';
+import "../styles/post.css"
 
 function Post({posts = [], currPostID = ""}) {
         
@@ -12,8 +13,8 @@ function Post({posts = [], currPostID = ""}) {
   }, [currPostID, posts])
 
   return (
-    <div className="mainDiv">
-      <img className="mainDiv_image" src={currPost?.[POST_IMAGE_URL]}></img>
+    <div className="post">
+      <img className="post-image" src={currPost?.[POST_IMAGE_URL]}></img>
       <CommentSection comments={currPost?.[POST_COMMENTS]} />
       <AddCommentContainer type="comment" />
     </div>

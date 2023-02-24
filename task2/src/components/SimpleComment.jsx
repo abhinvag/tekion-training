@@ -1,8 +1,7 @@
 import React, {useState} from 'react'
 import {USER_NAME, USER_IMAGE, USER_COMMENT, DATE, COMMENT, VOTES, INCREMENT_VOTES, DECREMENT_VOTES, COMMENT_ID } from '../constants';
-import DeleteModal from './DeleteModal';
-import ModalContainer from './ModalContainer';
 import ReplyButton from './ReplyButton';
+import "../styles/simpleComment.css"
 
 function SimpleComment({
   comment=COMMENT,
@@ -20,7 +19,7 @@ function SimpleComment({
   parentCommentId="root"
 }) {
 
-  const currUser = "Robert Downey Jr."; 
+  const currUser = "Jeremy Renner"; 
 
   const [editComment, setEditComment] = useState(false)
   const [newComment, setNewComment] = useState();
@@ -55,41 +54,43 @@ function SimpleComment({
   }
 
   return (
-    <div className='userCommentDiv'>
-        <div className='userCommentDiv-left'>
+    <div className='userComment'>
+        <div className='userCommentLeft'>
           <button
+            className='userCommentLeft-button'
             onClick={handleIncrementDecrement(comment[COMMENT_ID], INCREMENT_VOTES)}
           >
             +
           </button>
-          <span><b>{comment[VOTES]}</b></span>
+          <span className='userCommentLeft-span'><b>{comment[VOTES]}</b></span>
           <button
+            className='userCommentLeft-button'
             onClick={handleIncrementDecrement(comment[COMMENT_ID], DECREMENT_VOTES)}
           >
             -
           </button>
         </div>
-        <div className='userCommentDiv-right'>
-          <div className="userCommentDiv-top">
-            <div className='userCommentDiv-top-details'>
-              <img className="userCommentDiv_userImage" src={comment[USER_IMAGE]} />
-              <p><b>{comment[USER_NAME]}</b></p>
+        <div className='userCommentRight'>
+          <div className="userCommentRightTop">
+            <div className='userCommentRightTop-details'>
+              <img className="userComment-image" src={comment[USER_IMAGE]} />
+              <p className="userCommentRightTop-p"><b>{comment[USER_NAME]}</b></p>
               {comment[USER_NAME] == currUser && (
                 <div className='youdiv'><b>you</b></div>
               )}
-              <p>{comment[DATE]}</p>
+              <p className="userCommentRightTop-p">{comment[DATE]}</p>
             </div>
             {comment[USER_NAME] == currUser ? (
               <div>
                 <button
-                    className='deleteButton'
+                    className='deleteButton button-icon button-icon--red'
                     onClick={handleDeleteClick(comment[COMMENT_ID])}
                   
                 >
                     <i className="fa fa-solid fa-trash"></i> Delete 
                 </button>
                 <button
-                    className='editButton'
+                    className='editButton button-icon button-icon--purple'
                     onClick={updateEditComment(comment[USER_COMMENT])}
                 >
                     <i className="fa fa-solid fa-pen"></i> Edit 
@@ -105,7 +106,7 @@ function SimpleComment({
               </>
             )}
           </div>
-          <div className="userCommentDiv-comment">
+          <div className="userComment-comment">
               {editComment ? (
                 <div className='updateCommentDiv'> 
                   <textarea 

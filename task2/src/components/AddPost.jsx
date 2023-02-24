@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {POST_IMAGE_URL} from '../constants';
+import "../styles/addPost.css"
 
 function AddPost({addPost = () => {}}) {
 
@@ -34,20 +35,21 @@ function AddPost({addPost = () => {}}) {
     }
 
   return (
-    <div className='addPostDiv'>
-        <h2>Add New Post</h2>
+    <div className='addPost'>
+        <h2 className='addPost-h2'>Add New Post</h2>
         <input 
             name={POST_IMAGE_URL}
             value={imageURL}
             placeholder='Enter Image URL'
             onChange={updateImageURL}
             onFocus={handleFocus}
+            className='addPost-input'
         />
         {validationError != "" && (
             <span className='error'>{validationError}</span>
         )}
         <button 
-            className='addCommentButton'
+            className='button--purple'
             type='submit'
             onClick={handleClick}
         >  

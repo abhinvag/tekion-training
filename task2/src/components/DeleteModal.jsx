@@ -1,5 +1,6 @@
 import React from 'react'
 import { COMMENT_ID } from '../constants';
+import "../styles/deleteModal.css"
 
 function DeleteModal({
     updateModal = () => {},
@@ -16,17 +17,17 @@ function DeleteModal({
   return (
     <div className='deleteModal'>
         <h3>Delete comment</h3>
-        <p>Are you sure you want to delete this comment? This will remove the comment and can't be undone.</p>
-        <div className='deleteModal-buttonsDiv'>
+        <p className='deleteModal-p'>Are you sure you want to delete this comment? This will remove the comment and can't be undone.</p>
+        <div className='deleteModal-buttons'>
             <button 
                 onClick={updateModal}
-                className="deleteModal-buttonsDiv-cancel"
+                className="deleteModal-button button--gray"
             >
                 NO, CANCEL
             </button>
             <button
                 onClick={handleDelete}
-                className='deleteModal-buttonsDiv-delete'
+                className='deleteModal-button deleteModal-deleteButton button--red'
             >
                 YES, DELETE
             </button>

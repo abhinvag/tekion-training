@@ -1,0 +1,27 @@
+.comment{
+    background-color: white;
+    padding: 2rem;
+    margin-top: 2rem;
+    width: 100%;
+    border-radius: 0.8rem;
+}
+
+.nestedComment{
+    margin-left: 5%;
+    padding-left: 5%;
+    width: 95%;
+    border-left: solid;
+    border-width: 0.2rem;
+    border-color: rgba(128, 128, 128, 0.167);
+    margin-top: 2rem;
+}
+  
+.nestedComment > *:first-child{
+    margin-top: 0;
+}
+
+.showHideCommentsButton{
+    margin-top: 0.8rem;
+    width: 100%;
+    cursor: pointer;
+}

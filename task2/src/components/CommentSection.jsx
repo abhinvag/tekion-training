@@ -3,9 +3,9 @@ import CommentWithReply from './CommentWithReply';
 import {COMMENT_ID, COMMENT_REPLIES, DATE } from '../constants';
 import { AddCommentContainer } from '../containers/AddCommentContainer';
 import ModalContainer from './ModalContainer';
-import DeleteModal from './DeleteModal';
 import { SimpleCommentContainer } from '../containers/SimpleCommentContainer';
 import {DeleteModalContainer} from "../containers/DeleteModalContainer"
+import "../styles/commentSection.css"
 
 function CommentSection({comments=[]}) {
 

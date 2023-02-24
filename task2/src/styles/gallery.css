@@ -1,0 +1,45 @@
+.gallery{
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 80vh;
+    overflow: auto;
+}
+
+.gallery-image{
+    width: 60%;
+    height: 8rem;
+    border-radius: 2%;
+    margin-bottom: 0.8rem;
+    cursor: pointer;
+    transition-duration: 300ms;
+}
+
+.gallery-image--selected{
+    border-style: solid;
+    border-color: rgba(75, 86, 210, 0.8);
+    border-width: 0.2rem;
+    padding: 0.8rem;
+}
+
+
+@media only screen and (max-width: 1191px) {
+    .gallery{
+      flex-direction: row;
+      width: 80%;
+      height: auto;
+      margin-bottom: 10px;
+    }
+
+    .gallery-image{
+        margin-bottom: 0;
+        margin-right: 0.8rem;
+    }
+}
+
+@media only screen and (max-width: 855px) {
+    .gallery{
+        width: 90%;
+    }
+}

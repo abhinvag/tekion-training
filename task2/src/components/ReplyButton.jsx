@@ -17,7 +17,7 @@ function ReplyButton({
 
   return (
     <button
-        className='replyButton'
+        className='button-icon button-icon--purple replyButton'
         onClick={handleClick}
     >
         <i className="fa fa-solid fa-reply"></i> Reply 

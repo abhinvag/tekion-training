@@ -1,0 +1,30 @@
+.addPost{
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 0.8rem;
+  }
+  
+.addPost-h2{
+    margin-top: 0;
+    font-size: 2rem;
+}
+
+.addPost-input{
+    margin-top: 0;
+    width: 80%;
+}
+
+@media only screen and (max-width: 1191px) {
+    .addPost{
+        width: 80%;
+        margin-top: 0.8rem;
+    }
+}
+
+@media only screen and (max-width: 855px) {
+    .addPost{
+        width: 90%;
+    }
+}
