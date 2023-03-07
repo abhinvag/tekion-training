@@ -1,62 +1,112 @@
-var comments = [
-    {
-        "id": "sdjcbjsd",
-        "userName": "Chris Evans",
-        "userImage": "https://media.npr.org/assets/img/2022/11/08/ap22312071681283-0d9c328f69a7c7f15320e8750d6ea447532dff66.jpg",
-        "date": "10 Jan 2023, 10:44",
-        "comment": "Amazing Office",
-        "replies": [
-            {
-                "id": "askdnasjd",
-                "userName": "Robert Downey Jr.",
-                "userImage": "https://e00-marca.uecdn.es/assets/multimedia/imagenes/2023/01/12/16735402991293.jpg",
-                "date": "16 Jan 2023, 17:20",
-                "comment": "Hey Chris !! How are you ??",
-                "replies": []
-            }
-        ]
+var modal = {
+    currentPost: "",
+    comments:[
+        {
+            "id": "sdjcbjsd",
+            "userName": "Chris Evans",
+            "userImage": "https://media.npr.org/assets/img/2022/11/08/ap22312071681283-0d9c328f69a7c7f15320e8750d6ea447532dff66.jpg",
+            "date": "10 Jan 2023, 10:44",
+            "comment": "Amazing Office",
+            "replies": [
+                {
+                    "id": "askdnasjd",
+                    "userName": "Robert Downey Jr.",
+                    "userImage": "https://e00-marca.uecdn.es/assets/multimedia/imagenes/2023/01/12/16735402991293.jpg",
+                    "date": "16 Jan 2023, 17:20",
+                    "comment": "Hey Chris !! How are you ??",
+                    "replies": []
+                }
+            ]
+        },
+        {
+            "id": "assmdbqjd",
+            "userName": "Robert Downey Jr.",
+            "userImage": "https://e00-marca.uecdn.es/assets/multimedia/imagenes/2023/01/12/16735402991293.jpg",
+            "date": "16 Jan 2023, 17:20",
+            "comment": "I am gonna copy this design for the new Avengers HQ.",
+            "replies": [
+                {
+                    "id": "jcbsjcbwj",
+                    "userName": "Jeremy Renner",
+                    "userImage": "https://media.cnn.com/api/v1/images/stellar/prod/230102115303-digital-jeremy-renner.jpg?c=original",
+                    "date": "16 Jan 2023, 17:20",
+                    "comment": "Hey Robert",
+                    "replies": [
+                        {
+                            "userName": "Robert Downey Jr.",
+                            "userImage": "https://e00-marca.uecdn.es/assets/multimedia/imagenes/2023/01/12/16735402991293.jpg",
+                            "date": "16 Jan 2023, 17:20",
+                            "comment": "Hey",
+                            "replies": []
+                        }
+                    ]
+                }
+            ]
+                
+        },
+        {
+            "id": "asjkcnjd",
+            "userName": "Mark Ruffalo",
+            "userImage": "https://www.emmys.com/sites/default/files/Mark-Ruffalo.jpg",
+            "date": "16 Jan 2023, 17:20",
+            "comment": "Why isn't Avengers Tower that cool ??",
+            "replies": [
+            ]       
+        }
+    ]
+}
+
+const controller = {
+
+    init(){
+        controller.setCurrentPost("https://img.etimg.com/thumb/width-1200,height-900,imgsize-72880,resizemode-1,msid-91945253/industry/services/property-/-cstruction/tech-firm-tekion-leases-over-one-lakh-sqft-office-space-in-bengaluru-in-expansion-bid.jpg");
+        currPostView.init();
     },
-    {
-        "id": "assmdbqjd",
-        "userName": "Robert Downey Jr.",
-        "userImage": "https://e00-marca.uecdn.es/assets/multimedia/imagenes/2023/01/12/16735402991293.jpg",
-        "date": "16 Jan 2023, 17:20",
-        "comment": "I am gonna copy this design for the new Avengers HQ.",
-        "replies": [
-            {
-                "id": "jcbsjcbwj",
-                "userName": "Jeremy Renner",
-                "userImage": "https://media.cnn.com/api/v1/images/stellar/prod/230102115303-digital-jeremy-renner.jpg?c=original",
-                "date": "16 Jan 2023, 17:20",
-                "comment": "Hey Robert",
-                "replies": [
-                    {
-                        "userName": "Robert Downey Jr.",
-                        "userImage": "https://e00-marca.uecdn.es/assets/multimedia/imagenes/2023/01/12/16735402991293.jpg",
-                        "date": "16 Jan 2023, 17:20",
-                        "comment": "Hey",
-                        "replies": []
-                    }
-                ]
-            }
-        ]
-            
+    
+    getCurrentPost(){
+        return modal.currentPost;
     },
-    {
-        "id": "asjkcnjd",
-        "userName": "Mark Ruffalo",
-        "userImage": "https://www.emmys.com/sites/default/files/Mark-Ruffalo.jpg",
-        "date": "16 Jan 2023, 17:20",
-        "comment": "Why isn't Avengers Tower that cool ??",
-        "replies": [
-        ]       
+
+    setCurrentPost(post){
+        modal.currentPost = post; 
+    },
+
+    getComments(){
+        return modal.comments;
+    },
+
+    pushInComments(comment){
+        modal.comments.push(comment);
+    },
+
+    findCommentAndPushReplyHelper(id, reply, comments){
+
+        for(var i=0;i<comments.length;i++){
+            if(comments[i].id == id){
+                comments[i].replies.push(reply);
+                return true;
+            }
+            else if(comments[i].replies.length != 0){
+                let temp = this.findCommentAndPushReplyHelper(id, reply, comments[i].replies);
+                if(temp) return;
+            }
+        }
+    
+        return;
+    
+    },
+
+    findCommentAndPushReply(id, reply){
+        this.findCommentAndPushReplyHelper(id, reply, modal.comments);
     }
-]
+
+}
 
 function showComments(){
     const mainDiv = document.querySelector(".mainDiv");
     let newDiv = document.createElement("div");
     newDiv.setAttribute("id", "wholeCommentsDiv")
+    let comments = controller.getComments();
     comments.map(function(comment){
         if(comment.replies.length === 0){
             newDiv.append(getSimpleCommentStructure(comment));
@@ -231,13 +281,13 @@ function addNewComment(type, id){
     else{
         const cloneComment = JSON.parse(JSON.stringify(newComment))
         if(type == "comment") {
-            comments.push(cloneComment);
+            controller.pushInComments(cloneComment);
             document.getElementById("userName").value = "";
             document.getElementById("userImage").value = "";
             document.getElementById("userComment").value = "";
         }
         else{
-            findCommentAndPushReply(id.trim(), cloneComment, comments)
+            controller.findCommentAndPushReply(id.trim(), cloneComment)
             deleteReplyDiv();
         }
         refreshWholeCommentsDiv();
@@ -268,20 +318,17 @@ function addEventListenerToReplyButton(comment, uniqueReplyButton, newDiv, shoul
 
 }
 
-function findCommentAndPushReply(id, reply, comments){
-
-    for(var i=0;i<comments.length;i++){
-        if(comments[i].id == id){
-            comments[i].replies.push(reply);
-            return true;
-        }
-        else if(comments[i].replies.length != 0){
-            let temp = findCommentAndPushReply(id, reply, comments[i].replies);
-            if(temp) return;
-        }
+currPostView = {
+    init(){
+        this.currPostElem = document.getElementById("postImage");
+        this.render();
+    },
+    render(){
+        const currPost = controller.getCurrentPost();
+        this.currPostElem.setAttribute("src", currPost);
     }
-
-    return;
-
 }
+
+controller.init();
+
 
