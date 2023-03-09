@@ -1,11 +1,9 @@
 import { COMMENT_ID, POST_ID, ADD_POST, ADD_COMMENT, ADD_REPLY, INCREMENT_VOTES, DECREMENT_VOTES, DELETE_COMMENT, EDIT_COMMENT, USER_COMMENT } from "../../constants";
 
-export const addPost = (imageURL) => {
+export const addPost = (post) => {
     return {
         type: ADD_POST,
-        payload: {
-            imageURL
-        }
+        payload: post
     }
 }
 

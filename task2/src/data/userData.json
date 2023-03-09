@@ -1,0 +1,17 @@
+{
+    "captainamerica": {
+        "userID": "captainamerica",
+        "userName": "Chris Evans",
+        "userImage": "https://media.npr.org/assets/img/2022/11/08/ap22312071681283-0d9c328f69a7c7f15320e8750d6ea447532dff66.jpg"
+    },
+    "ironman": {
+        "userID": "ironman",
+        "userName": "Robert Downey Jr.",
+        "userImage": "https://e00-marca.uecdn.es/assets/multimedia/imagenes/2023/01/12/16735402991293.jpg"
+    },
+    "hawkeye": {
+        "userID": "hawkeye",
+        "userName": "Jeremy Renner",
+        "userImage": "https://media.cnn.com/api/v1/images/stellar/prod/230102115303-digital-jeremy-renner.jpg?c=original"
+    }
+}

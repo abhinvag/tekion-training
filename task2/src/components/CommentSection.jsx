@@ -10,13 +10,9 @@ import "../styles/commentSection.css"
 function CommentSection({comments=[]}) {
 
     const [showCommentsToggle, setShowCommentsToggle] = useState(false);
-    const [showAddReplyToggle, setShowAddReplyToggle] = useState(false);
+    
     const [showModal, setShowModal] = useState(false);
     const [currCommentID, setCurrCommentID] = useState();
-
-    const updateShowAddReplyToggle = (state) => {
-        setShowAddReplyToggle(state);
-    }
 
     const updateShowCommentsToggle = () => {
         setShowCommentsToggle(!showCommentsToggle);
@@ -29,58 +25,34 @@ function CommentSection({comments=[]}) {
 
   return (
     <>
-        {showCommentsToggle ? (
-            <>
-                <a 
-                id="hideButton" 
-                onClick={updateShowCommentsToggle} 
-                className="showHideCommentsButton"
-                >
-                    Hide Comments <i className="fa fa-light fa-angle-up"></i>
-                </a>
-                {comments.map((comment) => (
-                    <>
-                        {comment[COMMENT_REPLIES].length ===  0 ? (
-                            <div className='comment'>
-                                <SimpleCommentContainer
-                                    comment = {comment}
-                                    date = {comment[DATE]}
-                                    updateShowAddReplyToggle={updateShowAddReplyToggle}
-                                    setCurrCommentID={setCurrCommentID}
-                                    showRepliesButton={false}
-                                    updateModal={updateModal}
-                                />
-                            
-                                {(showAddReplyToggle && comment[COMMENT_ID] == currCommentID) && (
-                                    <AddCommentContainer
-                                        type="reply"
-                                        updateShowAddReplyToggle={updateShowAddReplyToggle}
-                                        comment={comment}
-                                    />
-                                )}
-                            </div>
-                        ):(
-                            <>
-                                <CommentWithReply 
-                                    comment={comment}
-                                    updateModal={updateModal}
-                                    currCommentID={currCommentID}
-                                    setCurrCommentID={setCurrCommentID}
-                                />
-                            </>
-                        )}
-                    </>
-                ))}
-            </>
-        ):(
-            <a 
-            id="showButton" 
+        <a 
             onClick={updateShowCommentsToggle} 
             className="showHideCommentsButton"
-            >
-                Show Comments <i className="fa fa-light fa-angle-down"></i>
-            </a>
+        >
+            {showCommentsToggle ? (
+                <>
+                    Hide Comments <i className="fa fa-light fa-angle-up"></i>
+                </>
+            ):(
+                <>
+                    Show Comments <i className="fa fa-light fa-angle-down"></i>
+                </>
+            )}
+        </a>
+        {showCommentsToggle && (
+            <>
+                {comments.map((comment) => (
+                    <CommentWithReply 
+                        comment={comment}
+                        updateModal={updateModal}
+                        currCommentID={currCommentID}
+                        setCurrCommentID={setCurrCommentID}
+                        key={`commentWithReply-${comment[COMMENT_ID]}`}
+                    />
+                ))}
+            </>
         )}
+
         {showModal && (
             <ModalContainer>
                 <DeleteModalContainer

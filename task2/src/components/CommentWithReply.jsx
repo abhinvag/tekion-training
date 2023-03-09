@@ -1,6 +1,5 @@
-import React, {useState} from 'react'
-import {COMMENT_ID, COMMENT, COMMENT_REPLIES, USER_NAME} from '../constants';
-import { AddCommentContainer } from '../containers/AddCommentContainer';
+import React from 'react'
+import {COMMENT_ID, COMMENT, COMMENT_REPLIES, USER_NAME, USER_ID} from '../constants';
 import { SimpleCommentContainer } from '../containers/SimpleCommentContainer';
 
 function CommentWithReply({
@@ -12,58 +11,30 @@ function CommentWithReply({
     parentCommentId="root"
 }) {
 
-    const [showRepliesToggle, setShowRepliesToggle] = useState(false);
-    const [showAddReplyToggle, setShowAddReplyToggle] = useState(false);
-
-    const updateShowAddReplyToggle = (state) => {
-        setShowAddReplyToggle(state);
-    }
-
-    const updateShowRepliesToggle = () => {
-        setShowRepliesToggle(!showRepliesToggle);
-    }
-
   return (
     <>
-        <div className='comment'>
-            <SimpleCommentContainer 
-                comment={comment}
-                updateShowAddReplyToggle={updateShowAddReplyToggle}
-                setCurrCommentID={setCurrCommentID}
-                showRepliesButton = {comment[COMMENT_REPLIES].length > 0}
-                showRepliesToggle={showRepliesToggle}
-                updateShowRepliesToggle={updateShowRepliesToggle}
-                commentAuthor={commentAuthor}
-                updateModal={updateModal}
-                parentCommentId={parentCommentId}
-            />
-        </div>
-        {(showAddReplyToggle && comment[COMMENT_ID] == currCommentID) && (
-            <AddCommentContainer
-                type="reply"
-                updateShowAddReplyToggle={updateShowAddReplyToggle}
-                comment={comment}
-            />
-        )}
+        <SimpleCommentContainer 
+            comment={comment}
+            setCurrCommentID={setCurrCommentID}
+            commentAuthor={commentAuthor}
+            updateModal={updateModal}
+            parentCommentId={parentCommentId}
+            key={`simpleComment-${comment[COMMENT_ID]}`}
+        />
         {comment[COMMENT_REPLIES].length > 0 && (
-            // <>
-            //     {showRepliesToggle && (
-                    <>
-                        {comment[COMMENT_REPLIES].map((reply) => (
-                            <div className='nestedComment'>
-                                <CommentWithReply 
-                                    comment={reply}
-                                    commentAuthor={comment[USER_NAME]}
-                                    updateModal={updateModal}
-                                    currCommentID={currCommentID}
-                                    setCurrCommentID={setCurrCommentID}
-                                    parentCommentId={comment[COMMENT_ID]}
-                                />
-                            </div>
-                        ))}
-                    </>
-            //     )}
-            // </>
+            <div className='nestedComments'>
+                {comment[COMMENT_REPLIES].map((reply) => (
+                    <CommentWithReply 
+                        comment={reply}
+                        commentAuthor={comment[USER_ID]}
+                        updateModal={updateModal}
+                        currCommentID={currCommentID}
+                        setCurrCommentID={setCurrCommentID}
+                        parentCommentId={comment[COMMENT_ID]}
+                        key={`commentWithReply-${reply[COMMENT_ID]}`}
+                    />
+                ))}
+            </div>
         )}
         
     </>

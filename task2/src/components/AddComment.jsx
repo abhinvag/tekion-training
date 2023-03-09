@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import {COMMENT, COMMENT_ID, USER_NAME, USER_IMAGE, USER_COMMENT } from '../constants';
+import {COMMENT, COMMENT_ID, USER_COMMENT, USER_ID } from '../constants';
 import "../styles/addComment.css"
 
 function AddComment({
@@ -8,13 +8,13 @@ function AddComment({
     comment=COMMENT, 
     currPostID = "",
     addComment = () => {},
-    addReply = () => {}
+    addReply = () => {},
+    users = {}
 }) {
 
     const [commentState, setCommentState] = useState(COMMENT);
     const [validationErrorObj, setValidationErrorObj] = useState({
-        [USER_NAME]: "",
-        [USER_IMAGE]: "",
+        [USER_ID]: "",
         [USER_COMMENT]: "",
     })
 
@@ -31,15 +31,14 @@ function AddComment({
     const validate = () => {
 
         let isValid = true;
-        let tempValidationErrorObj = [];
+        let tempValidationErrorObj = {};
 
-        if(commentState[USER_NAME].trim().length == 0){
-            tempValidationErrorObj[USER_NAME] = "This field cannot be empty !";
+        if(commentState[USER_ID].trim().length == 0){
+            tempValidationErrorObj[USER_ID] = "This field cannot be empty !";
             isValid = false;
         }
-        
-        if(commentState[USER_IMAGE].trim().length == 0){
-            tempValidationErrorObj[USER_IMAGE] = "This field cannot be empty !";
+        else if(users[commentState[USER_ID]] == undefined){
+            tempValidationErrorObj[USER_ID] = "Username does'nt exists";
             isValid = false;
         }
         
@@ -77,37 +76,22 @@ function AddComment({
 
   return (
     <div 
-        className= {type == "reply" ? "addReply addComment" : "addComment"}
+        className= {type == "reply" ? "addComment addReply" : "addComment"}
     >
         <div className='addCommentLeft'>
-            <input 
-                id="userName" 
+            <input  
                 type="text" 
-                placeholder="Add a name .." 
-                name={USER_NAME} 
-                value={commentState[USER_NAME]}
+                placeholder="Add your username .." 
+                name={USER_ID} 
+                value={commentState[USER_ID]}
                 onChange={updateComment}
                 onFocus={handleFocus}
                 className="addCommentLeft-input"
             />
-            {validationErrorObj[USER_NAME] != "" && (
-                <span className='error'>{validationErrorObj[USER_NAME]}</span>
+            {validationErrorObj[USER_ID] != "" && (
+                <span className='error'>{validationErrorObj[USER_ID]}</span>
             )}
-            <input 
-                id="userImage" 
-                type="text" 
-                placeholder="Add a image url .." 
-                name={USER_IMAGE} 
-                value={commentState[USER_IMAGE]}
-                onChange={updateComment}
-                onFocus={handleFocus}
-                className="addCommentLeft-input"
-            />
-            {validationErrorObj[USER_IMAGE] != "" && (
-                <span className='error'>{validationErrorObj[USER_IMAGE]}</span>
-            )}
-            <textarea 
-                id="userComment" 
+            <textarea  
                 rows="4" cols="50" 
                 placeholder="Add a comment .." 
                 name={USER_COMMENT} 

@@ -1,11 +1,17 @@
 import { connect } from "react-redux"
 import SimpleComment from "../components/SimpleComment"
+import { CURR_POST_ID, USERS, USER_ID } from "../constants";
 import { decrementVotes, editComment, incrementVotes } from "../store/posts/actions"
 
-const mapStateToProps = (state) => {
-    const currPostID = state.currPostID;
+const mapStateToProps = (state, props) => {
+    const currPostID = state[CURR_POST_ID];
+    const users = state[USERS];
+    const comment = props.comment;
+    const userID = comment[USER_ID];
+    const user = users[userID];
     return {
-        currPostID
+        currPostID,
+        user
     }
 }
 

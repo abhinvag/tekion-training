@@ -1,6 +1,9 @@
 .userComment{
     display: flex;
     width: 100%;
+    background-color: white;
+    border-radius: 0.8rem;
+    padding: 2rem;
 }
 
 .userCommentLeft{
@@ -40,7 +43,7 @@
     width: 2.4rem;
     height: 2.4rem;
     position: relative;
-    bottom: 0.2rem;
+    margin-right: 0.4rem;
 }
 
 .userCommentRightTop{
@@ -55,7 +58,7 @@
 }
 
 .userCommentRightTop-p{
-    margin: 0 0 0 1.6rem;
+    margin: 0 0.4rem 0 0;
 }
 
 
@@ -84,7 +87,7 @@
 .youdiv{
     background-color: rgba(75, 86, 210);
     color: white;
-    margin-left: 0.4rem;
+    margin-right: 0.4rem;
     padding: 0 0.4rem;
     height: 1.4rem;
 }

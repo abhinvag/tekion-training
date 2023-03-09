@@ -1,10 +1,11 @@
 import { connect } from "react-redux";
 import Gallery from "../components/Gallery";
+import { CURR_POST_ID, POSTS } from "../constants";
 import {updateCurrPostID} from "../store/curr-post/actions"
 
 const mapStateToProps = (state) => {
-    const posts = state.posts;
-    const currPostID = state.currPostID;
+    const posts = state[POSTS];
+    const currPostID = state[CURR_POST_ID];
     return {
         posts,
         currPostID

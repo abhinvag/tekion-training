@@ -1,11 +1,19 @@
 import { connect } from "react-redux"
 import AddPost from "../components/AddPost"
+import { USERS } from "../constants";
 import { addPost } from "../store/posts/actions"
 
-const mapDispatchToProps = (dispatch) => {
+const mapStateToProps = (state) => {
+    const users = state[USERS];
     return {
-        addPost: (imageURL) => {dispatch(addPost(imageURL))}
+        users
     }
 }
 
-export const AddPostContainer = connect(null, mapDispatchToProps)(AddPost);
+const mapDispatchToProps = (dispatch) => {
+    return {
+        addPost: (post) => {dispatch(addPost(post))}
+    }
+}
+
+export const AddPostContainer = connect(mapStateToProps, mapDispatchToProps)(AddPost);

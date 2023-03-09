@@ -1,22 +1,26 @@
-import React, {useState, useEffect} from 'react'
+import React from 'react'
 import CommentSection from './CommentSection';
-import { POST, POST_COMMENTS, POST_IMAGE_URL, POST_ID } from '../constants';
+import { POST, POST_COMMENTS, POST_IMAGE_URL, POST_TEXT, USER_NAME, USER_IMAGE, USER_ID, POST_ID } from '../constants';
 import { AddCommentContainer } from '../containers/AddCommentContainer';
 import "../styles/post.css"
 
-function Post({posts = [], currPostID = ""}) {
+function Post({post = {}, user = {}}) {
         
-  const [currPost, setCurrPost] = useState(POST);
-
-  useEffect(() => {
-    setCurrPost(posts.find((post) => post[POST_ID] === currPostID));
-  }, [currPostID, posts])
-
   return (
     <div className="post">
-      <img className="post-image" src={currPost?.[POST_IMAGE_URL]}></img>
-      <CommentSection comments={currPost?.[POST_COMMENTS]} />
-      <AddCommentContainer type="comment" />
+      <div className="postDetails">
+        <div className="postDetails-top">
+          <img className='postDetails-userImage' src={user[USER_IMAGE]} ></img>
+          <div className='postDetails-user'>
+            <p className='postDetails-userName'>{user[USER_NAME]}</p>
+            <p className='postDetails-userID p--gray'>@{user[USER_ID]}</p>
+          </div>
+        </div>
+        <p>{post[POST_TEXT]}</p>
+        <img className="postDetails-postImage" src={post?.[POST_IMAGE_URL]}></img>
+      </div>
+      <CommentSection comments={post?.[POST_COMMENTS]} key={`commentSection-${post[POST_ID]}`}/>
+      <AddCommentContainer type="comment" key={`addComment-${post[POST_ID]}`} />
     </div>
   )
 }

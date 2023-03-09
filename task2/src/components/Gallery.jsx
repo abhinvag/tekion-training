@@ -13,12 +13,13 @@ function Gallery({
     }
 
   return (
-    <div className='gallery'>
+    <div className='gallery '>
         {posts.map((post) => (
             <img 
                 className={post[POST_ID] == currPostID ? 'gallery-image gallery-image--selected' : 'gallery-image' }
                 src={post[POST_IMAGE_URL]} 
                 onClick={getHandleClick(post[POST_ID])}
+                key={post[POST_ID]}
             />
         ))}
     </div>

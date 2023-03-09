@@ -1,9 +1,9 @@
 import { COMMENT_ID, POST_COMMENTS, POST_ID, ADD_COMMENT, ADD_POST, ADD_REPLY, INCREMENT_VOTES, VOTES, DECREMENT_VOTES, COMMENT, COMMENT_REPLIES, DELETE_COMMENT, EDIT_COMMENT, USER_COMMENT } from "../../constants";
-import data from "../../data.json"
+import postsData from "../../data/postsData.json"
 import produce from "immer";
 import { createComment, createPost, findCommentAndReturn } from "../../helper";
 
-export const postsReducer = produce((state = data, action) => {
+export const postsReducer = produce((state = postsData, action) => {
 
     const findComment = (id) => {
         let post = state.find((post) => post[POST_ID] == action.payload[POST_ID]);
@@ -69,4 +69,4 @@ export const postsReducer = produce((state = data, action) => {
     }
 
     return state;
-}, data)
+}, postsData)

@@ -1,18 +1,12 @@
-import React, {useState} from 'react'
-import { COMMENT, COMMENT_ID } from '../constants'
+import React from 'react'
 
 function ReplyButton({
   updateShowAddReplyToggle = () => {}, 
-  setCurrCommentID = () => {}, 
-  comment=COMMENT
+  showAddReplyToggle=false,
 }) {
 
-  const [toggle, setToggle] = useState(true)
-
     const handleClick = () => {
-        updateShowAddReplyToggle(toggle)
-        setCurrCommentID(comment[COMMENT_ID])
-        setToggle(!toggle)
+        updateShowAddReplyToggle(!showAddReplyToggle)
     }
 
   return (

@@ -8,7 +8,7 @@ function App() {
 
   return (
     <>
-      <h1 className='main_heading'>Tekion Book</h1>
+      <h1 className='main_heading'>Chatter</h1>
       <div className='wall'>
         <GalleryContainer />
         <PostContainer />

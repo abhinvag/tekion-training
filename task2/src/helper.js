@@ -1,5 +1,5 @@
 import { nanoid } from "nanoid";
-import { DATE, COMMENT_ID, MONTHS_ARRAY, POST_BY, POST_COMMENTS, POST_ID, POST_IMAGE_URL, COMMENT_REPLIES, VOTES } from "./constants";
+import { DATE, COMMENT_ID, MONTHS_ARRAY, USER_ID, POST_COMMENTS, POST_ID, POST_IMAGE_URL, COMMENT_REPLIES, VOTES, POST_TEXT } from "./constants";
 
 export const calculateDate = () => {
     let date = new Date();
@@ -43,12 +43,13 @@ export const checkImage = (url) => {
     return false;
 }
 
-export const createPost = ({imageURL}) => {
+export const createPost = ({postImageURL, userID, postText}) => {
     return {
         [POST_ID]: nanoid(),
-        [POST_BY]: "",
+        [USER_ID]: userID,
         [POST_COMMENTS]: [],
-        [POST_IMAGE_URL]: imageURL
+        [POST_IMAGE_URL]: postImageURL,
+        [POST_TEXT]: postText
     }
 }
 

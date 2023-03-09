@@ -4,7 +4,7 @@ import { CURR_POST_ID } from "../constants"
 import { deleteComment } from "../store/posts/actions";
 
 const mapStateToProps = (state) => {
-    const currPostID = state.currPostID;
+    const currPostID = state[CURR_POST_ID];
     return {
         currPostID
     }

@@ -2,20 +2,19 @@
     {
         "postID": "id",
         "postImageURL": "https://img.etimg.com/thumb/width-1200,height-900,imgsize-72880,resizemode-1,msid-91945253/industry/services/property-/-cstruction/tech-firm-tekion-leases-over-one-lakh-sqft-office-space-in-bengaluru-in-expansion-bid.jpg",
-        "postBy": "",
+        "userID": "captainamerica",
+        "postText": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras finibus maximus ornare. Sed non accumsan est, ac efficitur nibh. Suspendisse in enim dignissim lorem porta auctor non eu eros. Sed porta libero quis lacinia ultricies. Aliquam nec neque feugiat, auctor purus in, molestie diam.",
         "comments": [
             {
                 "commentID": "sdjcbjsd",
-                "userName": "Chris Evans",
-                "userImage": "https://media.npr.org/assets/img/2022/11/08/ap22312071681283-0d9c328f69a7c7f15320e8750d6ea447532dff66.jpg",
+                "userID": "captainamerica",
                 "date": "10 Jan",
                 "userComment": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras finibus maximus ornare. Sed non accumsan est, ac efficitur nibh. Suspendisse in enim dignissim lorem porta auctor non eu eros. Sed porta libero quis lacinia ultricies. Aliquam nec neque feugiat, auctor purus in, molestie diam.",
                 "votes": 5,
                 "commentReplies": [
                     {
                         "commentID": "askdnasjd",
-                        "userName": "Robert Downey Jr.",
-                        "userImage": "https://e00-marca.uecdn.es/assets/multimedia/imagenes/2023/01/12/16735402991293.jpg",
+                        "userID": "ironman",
                         "date": "16 Jan",
                         "userComment": "Hey Chris !! How are you ??",
                         "votes": 4,
@@ -25,24 +24,21 @@
             },
             {
                 "commentID": "assmdbqjd",
-                "userName": "Robert Downey Jr.",
-                "userImage": "https://e00-marca.uecdn.es/assets/multimedia/imagenes/2023/01/12/16735402991293.jpg",
+                "userID": "ironman",
                 "date": "16 Jan",
                 "userComment": "I am gonna copy this design for the new Avengers HQ.",
                 "votes": 10,
                 "commentReplies": [
                     {
                         "commentID": "jcbsjcbwj",
-                        "userName": "Jeremy Renner",
-                        "userImage": "https://media.cnn.com/api/v1/images/stellar/prod/230102115303-digital-jeremy-renner.jpg?c=original",
+                        "userID": "hawkeye",
                         "date": "16 Jan",
                         "userComment": "Hey Robert",
                         "votes": 7,
                         "commentReplies": [
                             {
                                 "commentID": "msnbcawje",
-                                "userName": "Robert Downey Jr.",
-                                "userImage": "https://e00-marca.uecdn.es/assets/multimedia/imagenes/2023/01/12/16735402991293.jpg",
+                                "userID": "ironman",
                                 "date": "16 Jan",
                                 "userComment": "Hey",
                                 "votes": 2,
@@ -52,31 +48,43 @@
                     }
                 ]
                     
+            },
+            {
+                "commentID": "sdfawefewf",
+                "userID": "ironman",
+                "date": "10 Jan",
+                "userComment": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras finibus maximus ornare. Sed non accumsan est, ac efficitur nibh. Suspendisse in enim dignissim lorem porta auctor non eu eros. Sed porta libero quis lacinia ultricies. Aliquam nec neque feugiat, auctor purus in, molestie diam.",
+                "votes": 5,
+                "commentReplies": []
             }
         ]
     },
     {
         "postID": "id2",
         "postImageURL": "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2127&q=80",
-        "postBy": "",
+        "userID": "ironman",
+        "postText": "sbdcjwbclawecblae",
         "comments": []
     },
     {
         "postID": "id3",
         "postImageURL": "https://images.unsplash.com/photo-1438449805896-28a666819a20?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
-        "postBy": "",
+        "userID": "hawkeye",
+        "postText": "sbdcjwbclawecblae",
         "comments": []
     },
     {
         "postID": "id4",
         "postImageURL": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YmVhY2h8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=80",
-        "postBy": "",
+        "userID": "captainamerica",
+        "postText": "sbdcjwbclawecblae",
         "comments": []
     },
     {
         "postID": "id5",
         "postImageURL": "https://images.unsplash.com/photo-1488866022504-f2584929ca5f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2062&q=80",
-        "postBy": "",
+        "userID": "ironman",
+        "postText": "sbdcjwbclawecblae",
         "comments": []
     }
 ]
