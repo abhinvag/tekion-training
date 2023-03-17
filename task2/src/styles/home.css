@@ -7,10 +7,23 @@
 }
 
 .wall{
-  margin-top: 2rem;
+  margin-top: 4rem;
   display: flex;
 }
 
+.galleryContainer{
+  width: 60%;
+}
+
+.addPostContainer{
+  width: 40%;
+  height: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+  
 @media only screen and (max-width: 1191px) {
 
   .wall{
@@ -18,5 +31,12 @@
     justify-content: center;
     align-items: center;
   }
+  .galleryContainer{
+    width: 90%;
+  }
+  .addPostContainer{
+    width: 90%;
+  }
 
 }
+  

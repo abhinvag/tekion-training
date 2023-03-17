@@ -1,26 +1,35 @@
 import React from 'react'
-import { POST_ID, POST_IMAGE_URL } from '../constants'
+import { POST_ID, POST_IMAGE_URL, USER_ID, USER_IMAGE, USER_NAME, POST_TEXT } from '../constants'
 import "../styles/gallery.css"
+import { useNavigate } from 'react-router-dom'
 
 function Gallery({
     posts = [], 
-    currPostID = "", 
+    users = {},
     updateCurrPostID = () => {}
 }) {
 
+    const navigate = useNavigate();
+
     const getHandleClick = (id) =>  () => {
         updateCurrPostID(id);
+        navigate(`/post/${id}`);
     }
 
   return (
-    <div className='gallery '>
+    <div className='gallery'>
         {posts.map((post) => (
-            <img 
-                className={post[POST_ID] == currPostID ? 'gallery-image gallery-image--selected' : 'gallery-image' }
-                src={post[POST_IMAGE_URL]} 
-                onClick={getHandleClick(post[POST_ID])}
-                key={post[POST_ID]}
-            />
+            <div className="galleryPostDetails makeWhite" key={post[POST_ID]} onClick={getHandleClick(post[POST_ID])}>
+                <div className="postDetails-top">
+                <img className='postDetails-userImage' src={users[post[USER_ID]][USER_IMAGE]} ></img>
+                <div className='postDetails-user'>
+                    <p className='postDetails-userName'>{users[post[USER_ID]][USER_NAME]}</p>
+                    <p className='postDetails-userID p--gray'>@{users[post[USER_ID]][USER_ID]}</p>
+                </div>
+                </div>
+                <p>{post[POST_TEXT]}</p>
+                <img className="postDetails-postImage" src={post[POST_IMAGE_URL]}></img>
+            </div>
         ))}
     </div>
   )

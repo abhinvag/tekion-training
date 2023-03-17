@@ -4,9 +4,7 @@
 
 body {
   margin: 0;
-  font-family: 'Roboto', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Rubik', sans-serif;
   background-color: #f8f9fa;
 }
 
@@ -25,12 +23,15 @@ input, textarea{
 
 textarea::placeholder{
   font-family: 'Roboto', sans-serif;
-  font-weight: bold;
+}
+
+a{
+  text-decoration: none;
 }
 
 .error {
   color: rgba(255, 0, 0, 1);
-  /* margin: 0.4rem 0; */
+  margin: 0.4rem 0;
   font-size: 1rem;
 }
 
@@ -40,7 +41,7 @@ textarea::placeholder{
 
 .makeWhite {
   background-color: white;
-  padding: 0.8rem;
+  padding: 1.4rem;
   border-radius: 2%;
 }
 

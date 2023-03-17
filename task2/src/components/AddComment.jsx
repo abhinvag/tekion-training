@@ -38,7 +38,7 @@ function AddComment({
             isValid = false;
         }
         else if(users[commentState[USER_ID]] == undefined){
-            tempValidationErrorObj[USER_ID] = "Username does'nt exists";
+            tempValidationErrorObj[USER_ID] = "Username doesn't exists";
             isValid = false;
         }
         

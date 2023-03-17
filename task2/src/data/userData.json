@@ -1,17 +1,22 @@
 {
     "captainamerica": {
         "userID": "captainamerica",
-        "userName": "Chris Evans",
+        "userName": "Steve Rogers",
         "userImage": "https://media.npr.org/assets/img/2022/11/08/ap22312071681283-0d9c328f69a7c7f15320e8750d6ea447532dff66.jpg"
     },
     "ironman": {
         "userID": "ironman",
-        "userName": "Robert Downey Jr.",
+        "userName": "Tony Stark",
         "userImage": "https://e00-marca.uecdn.es/assets/multimedia/imagenes/2023/01/12/16735402991293.jpg"
     },
     "hawkeye": {
         "userID": "hawkeye",
-        "userName": "Jeremy Renner",
+        "userName": "Clint Barton",
         "userImage": "https://media.cnn.com/api/v1/images/stellar/prod/230102115303-digital-jeremy-renner.jpg?c=original"
+    },
+    "sherlock": {
+        "userID": "sherlock",
+        "userName": "Sherlock Holmes",
+        "userImage": "https://pyxis.nymag.com/v1/imgs/f47/788/caac0f6d9bc8edc26a8c8b17d69a41e447-02-sherlock.rsquare.w330.jpg"
     }
 }

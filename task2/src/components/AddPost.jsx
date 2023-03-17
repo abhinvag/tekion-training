@@ -35,7 +35,7 @@ function AddPost({
         }
         else if(users[post[USER_ID]] == undefined){
             console.log("hello");
-            tempValidationErrorObj[USER_ID] = "Username does'nt exists !";
+            tempValidationErrorObj[USER_ID] = "Username doesn't exists !";
             isValid = false;
         }
 
@@ -67,7 +67,7 @@ function AddPost({
 
   return (
     <div className='addPost'>
-        <h2 className='addPost-h2'>Add New Post</h2>
+        <h2 className='addPost-h2'>What's happening ?</h2>
         <div className='addPost-input'>
             <input 
                 name={USER_ID}
@@ -84,7 +84,7 @@ function AddPost({
             <input 
                 name={POST_IMAGE_URL}
                 value={post[POST_IMAGE_URL]}
-                placeholder='Add Image URL ..'
+                placeholder='Add image URL ..'
                 onChange={updatePost}
                 onFocus={handleFocus}
             />
@@ -106,7 +106,7 @@ function AddPost({
             type='submit'
             onClick={handleClick}
         >  
-            ADD
+            SHARE
         </button>
     </div>
   )
