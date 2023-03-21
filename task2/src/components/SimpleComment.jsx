@@ -57,7 +57,7 @@ function SimpleComment({
   }
 
   return (
-    <div className='comment'>
+    <div className='comment' id={comment[COMMENT_ID]}>
       <div className='userComment'>
           <div className='userCommentLeft'>
             <button

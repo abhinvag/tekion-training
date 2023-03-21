@@ -2,11 +2,14 @@ import { createSelector } from "reselect";
 import { USERS, USER_ID } from "../../constants";
 import { selectPost } from "../posts/selector";
 
-export const selectUsers = (state, props) => state[USERS];
+export const selectUsers = (state) => {
+    return state[USERS];
+}
 
 export const selectUserIdFromComment = (state, props) => props.comment[USER_ID];
 
 export const selectUserIdFromPost = createSelector([selectPost], (post) => {
+    if(post == undefined) return undefined
     return post[USER_ID];
 })
 

@@ -63,7 +63,7 @@ export const createComment = (comment) => {
 }
 
 export const getPostIdFromURL = () => {
-    const id = window.location.pathname.split("/")[2];
-    return id;
+    const postId = window.location.pathname.split("/")[2];
+    return postId;
 }   
 

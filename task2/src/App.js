@@ -15,7 +15,7 @@ function App() {
       </Link>
       <Routes >
         <Route path='/' exact element={<Home />} />
-        <Route path='/post/:id' element={<PostContainer />} />
+        <Route path='/post/:postId/:commentId?' element={<PostContainer />} />
         <Route path='/*' element={<Error />}/>
       </Routes>
     </Router>

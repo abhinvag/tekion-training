@@ -23,3 +23,9 @@
     width: 100%;
     cursor: pointer;
 }
+
+.noComments{
+    color: gray;
+    text-align: left;
+}
+
