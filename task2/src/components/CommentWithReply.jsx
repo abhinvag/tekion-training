@@ -7,6 +7,7 @@ function CommentWithReply({
     commentAuthor="",
     updateModal = () => {},
     currCommentID="",
+    currPostID="",
     setCurrCommentID = () => {},
     parentCommentId="root"
 }) {
@@ -14,12 +15,13 @@ function CommentWithReply({
   return (
     <>
         <SimpleCommentContainer 
+            key={`simpleComment-${comment[COMMENT_ID]}`}
             comment={comment}
             setCurrCommentID={setCurrCommentID}
             commentAuthor={commentAuthor}
             updateModal={updateModal}
             parentCommentId={parentCommentId}
-            key={`simpleComment-${comment[COMMENT_ID]}`}
+            currPostID={currPostID}
         />
         {comment[COMMENT_REPLIES].length > 0 && (
             <div className='nestedComments'>
@@ -29,6 +31,7 @@ function CommentWithReply({
                         commentAuthor={comment[USER_ID]}
                         updateModal={updateModal}
                         currCommentID={currCommentID}
+                        currPostID={currPostID}
                         setCurrCommentID={setCurrCommentID}
                         parentCommentId={comment[COMMENT_ID]}
                         key={`commentWithReply-${reply[COMMENT_ID]}`}

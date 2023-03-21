@@ -1,13 +1,14 @@
 import React, {useState} from 'react'
 import CommentWithReply from './CommentWithReply';
-import {COMMENT_ID, COMMENT_REPLIES, DATE } from '../constants';
-import { AddCommentContainer } from '../containers/AddCommentContainer';
+import {COMMENT_ID} from '../constants';
 import ModalContainer from './ModalContainer';
-import { SimpleCommentContainer } from '../containers/SimpleCommentContainer';
 import {DeleteModalContainer} from "../containers/DeleteModalContainer"
 import "../styles/commentSection.css"
 
-function CommentSection({comments=[]}) {
+function CommentSection({
+    comments=[],
+    currPostID=""
+}) {
 
     const [showCommentsToggle, setShowCommentsToggle] = useState(false);
     
@@ -46,6 +47,7 @@ function CommentSection({comments=[]}) {
                         comment={comment}
                         updateModal={updateModal}
                         currCommentID={currCommentID}
+                        currPostID={currPostID}
                         setCurrCommentID={setCurrCommentID}
                         key={`commentWithReply-${comment[COMMENT_ID]}`}
                     />
@@ -58,6 +60,7 @@ function CommentSection({comments=[]}) {
                 <DeleteModalContainer
                     updateModal={updateModal}
                     currCommentID={currCommentID}
+                    currPostID={currPostID}
                 />
             </ModalContainer>
         )}

@@ -15,8 +15,6 @@ function Post({post = {}, user = {}}) {
     }
   }, [])
   
-
- 
         
   return (
     <div className="post">
@@ -31,8 +29,16 @@ function Post({post = {}, user = {}}) {
         <p>{post[POST_TEXT]}</p>
         <img className="postDetails-postImage" src={post?.[POST_IMAGE_URL]}></img>
       </div>
-      <CommentSection comments={post?.[POST_COMMENTS]} key={`commentSection-${post[POST_ID]}`}/>
-      <AddCommentContainer type="comment" key={`addComment-${post[POST_ID]}`} />
+      <CommentSection 
+        key={`commentSection-${post[POST_ID]}`}
+        comments={post?.[POST_COMMENTS]} 
+        currPostID={post[POST_ID]}
+      />
+      <AddCommentContainer 
+        key={`addComment-${post[POST_ID]}`} 
+        type="comment" 
+        currPostID={post[POST_ID]}
+      />
     </div>
   )
 }

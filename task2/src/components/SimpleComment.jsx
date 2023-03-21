@@ -147,6 +147,7 @@ function SimpleComment({
               updateShowAddReplyToggle={updateShowAddReplyToggle}
               comment={comment}
               key={comment[COMMENT_ID]}
+              currPostID = {currPostID}
           />
         )}
     </div>

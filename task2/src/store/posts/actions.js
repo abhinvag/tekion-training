@@ -29,6 +29,7 @@ export const addReply = (postId, commentId, reply) => {
 }
 
 export const incrementVotes = (postId, commentId) => {
+    console.log(postId);
     return {
         type: INCREMENT_VOTES,
         payload: {

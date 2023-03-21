@@ -6,13 +6,11 @@ import { useNavigate } from 'react-router-dom'
 function Gallery({
     posts = [], 
     users = {},
-    updateCurrPostID = () => {}
 }) {
 
     const navigate = useNavigate();
 
     const getHandleClick = (id) =>  () => {
-        updateCurrPostID(id);
         navigate(`/post/${id}`);
     }
 
