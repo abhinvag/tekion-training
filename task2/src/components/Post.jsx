@@ -2,7 +2,6 @@ import React, {useEffect} from 'react'
 import CommentSection from './CommentSection';
 import { POST, POST_COMMENTS, POST_IMAGE_URL, POST_TEXT, USER_NAME, USER_IMAGE, USER_ID, POST_ID } from '../constants';
 import { AddCommentContainer } from '../containers/AddCommentContainer';
-import "../styles/post.css";
 import { useNavigate } from 'react-router-dom';
 
 function Post({post = {}, user = {}}) {

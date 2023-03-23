@@ -5,22 +5,20 @@
     align-items: center;
     justify-content: center;
     margin-bottom: 0.8rem;
-    background-color: white;
+    background-color: $color-white;
     padding: 1rem;
     border-radius: 0.8rem;
+    &-h2{
+        margin-top: 0;
+        font-size: 1.4rem;
+    }
+    &-input{
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+    }
 }
   
-.addPost-h2{
-    margin-top: 0;
-    font-size: 1.4rem;
-}
-
-.addPost-input{
-    width: 90%;
-    display: flex;
-    flex-direction: column;
-}
-
 @media only screen and (max-width: 1191px) {
     .addPost{
         width: 80%;

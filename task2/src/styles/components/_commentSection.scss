@@ -9,13 +9,11 @@
     width: 95%;
     border-left: solid;
     border-width: 0.2rem;
-    border-color: rgba(128, 128, 128, 0.167);
+    border-color: $color-gray--dark;
     margin-top: 2rem;
-}
-
-  
-.nestedComments > *:first-child{
-    margin-top: 0;
+    & > *:first-child{
+        margin-top: 0;
+    }
 }
 
 .showHideCommentsButton{
@@ -25,7 +23,7 @@
 }
 
 .noComments{
-    color: gray;
+    color: $color-gray;
     text-align: left;
 }
 

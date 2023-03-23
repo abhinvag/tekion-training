@@ -1,6 +1,5 @@
 import React, {useState} from 'react'
 import {COMMENT, COMMENT_ID, USER_COMMENT, USER_ID } from '../constants';
-import "../styles/addComment.css"
 
 function AddComment({
     type="comment", 

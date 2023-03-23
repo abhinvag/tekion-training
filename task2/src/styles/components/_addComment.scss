@@ -1,0 +1,51 @@
+
+.addComment{
+
+    display: flex;
+    background-color: $color-white;
+    border-radius: 0.8rem;
+    width: 100%;
+    padding: 2rem;
+    margin-top: 2rem;
+    
+    &Left{
+       
+        width: 85%;
+        
+        &-input{
+            width: 100%;
+        }
+        
+        &-textarea{
+            width: 100% !important;
+        }
+    }
+    
+    &Right{
+        width: 15%;
+        text-align: center;
+    }
+}
+
+.addReply{
+    margin-top: 0.8rem;
+}
+
+
+@media only screen and (max-width: 855px) {
+    .addComment{
+
+        flex-direction: column;
+
+        &Left{
+            width: 100%;
+        }
+        
+        &Right{
+            width: 100%;
+            text-align: right;
+        }
+    }
+
+
+}

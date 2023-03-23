@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import {POST_IMAGE_URL, POST, USER_ID, POST_TEXT} from '../constants';
-import "../styles/addPost.css"
 
 function AddPost({
     addPost = () => {},

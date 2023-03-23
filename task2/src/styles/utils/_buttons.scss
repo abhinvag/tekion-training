@@ -1,13 +1,13 @@
 button{
     margin-top: 0.4rem;
-    background-color: #f8f9fa;
+    background-color: $color-background;
     border-color: transparent;
     cursor: pointer;
 }
 
 .button--purple{
-    background-color: rgba(75, 86, 210, 0.8) !important;
-    color: white;
+    background-color: $color-primary !important;
+    color: $color-white;
     transition-duration: 500ms;
     border-radius: 0.4rem;
     margin-top: 0.8rem;
@@ -17,15 +17,15 @@ button{
 }
 
 .button--purple:hover{
-    background-color: rgba(75, 86, 210, 0.3) !important;
+    background-color: $color-primary--light !important;
 }
 
 .button--gray{
-    background-color: gray;
+    background-color: $color-gray;
 }
 
 .button--red{
-    background-color: red;
+    background-color: $color-red;
 }
 
 .button-icon{
@@ -34,19 +34,19 @@ button{
 }
 
 .button-icon--purple{
-    color: rgba(75, 86, 210, 0.8);
+    color: $color-primary;
 }
 
 .button-icon--purple:hover{
-    color: rgba(75, 86, 210, 0.3);
+    color: $color-primary--light;
 }
 
 .button-icon--red{
-    color: red;
+    color: $color-red;
 }
   
 .button-icon--red:hover{
-    color: rgba(255, 0, 0, 0.3);
+    color: $color-red--light;
 }
 
 /* CUSTOM BUTTON CLASSES */

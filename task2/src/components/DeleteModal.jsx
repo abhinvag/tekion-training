@@ -1,6 +1,6 @@
 import React from 'react'
 import { COMMENT_ID } from '../constants';
-import "../styles/deleteModal.css"
+
 
 function DeleteModal({
     updateModal = () => {},

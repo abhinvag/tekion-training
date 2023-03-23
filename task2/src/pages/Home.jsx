@@ -1,4 +1,3 @@
-import '../styles/home.css';
 import { AddPostContainer } from '../containers/AddPostContainer';
 import { GalleryContainer } from '../containers/GalleryContainer';
 

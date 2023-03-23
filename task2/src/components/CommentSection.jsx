@@ -3,7 +3,6 @@ import CommentWithReply from './CommentWithReply';
 import {COMMENT_ID} from '../constants';
 import ModalContainer from './ModalContainer';
 import {DeleteModalContainer} from "../containers/DeleteModalContainer"
-import "../styles/commentSection.css"
 import { useParams } from 'react-router-dom';
 
 function CommentSection({

@@ -1,0 +1,57 @@
+.post{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    margin: auto;
+    margin-top: 1.2rem;
+}
+
+.postDetails{
+    width: 100%;
+    &-top{
+        display: flex;
+    }
+    
+    &-userImage{
+        border-radius: 100%;
+        width: 3rem;
+        height: 3rem;
+        margin-right: 0.4rem;
+    }
+    
+    &-user{
+        margin-top: 0.3rem
+    }
+    
+    &-userName{
+        margin: 0;
+        font-weight: bold;
+    }
+    
+    &-userID{
+        margin: 0;
+    }
+    
+    &-postImage{
+        height: 400px;
+        width: 100%;
+        border-radius: 2%;
+        margin-bottom: 0.8rem;
+    }
+}
+
+
+@media only screen and (max-width: 1191px) {
+    .post{
+        width: 80%;
+    }
+
+}
+
+@media only screen and (max-width: 855px) {
+    .post{
+        width: 90%;
+    }
+}

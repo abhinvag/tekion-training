@@ -5,7 +5,7 @@
 body {
   margin: 0;
   font-family: 'Rubik', sans-serif;
-  background-color: #f8f9fa;
+  background-color: $color-background;
 }
 
 code {
@@ -30,17 +30,17 @@ a{
 }
 
 .error {
-  color: rgba(255, 0, 0, 1);
+  color: $color-red;
   margin: 0.4rem 0;
   font-size: 1rem;
 }
 
 .p--gray{
-  color: gray;
+  color: $color-gray;
 }
 
 .makeWhite {
-  background-color: white;
+  background-color: $color-white;
   padding: 1.4rem;
   border-radius: 2%;
 }

@@ -1,7 +1,6 @@
 import React, {useState} from 'react'
 import {USER_NAME, USER_IMAGE, USER_COMMENT, DATE, COMMENT, VOTES, INCREMENT_VOTES, DECREMENT_VOTES, COMMENT_ID, USER_ID } from '../constants';
 import ReplyButton from './ReplyButton';
-import "../styles/simpleComment.css"
 import {AddCommentContainer} from "../containers/AddCommentContainer"
 
 function SimpleComment({
@@ -122,9 +121,9 @@ function SimpleComment({
                       className="updateCommentTextarea"
                       onChange={handleNewCommentEdit}
                     />
-                    <div className='updateCommentButtonDiv'>
+                    <div className='userCommentUpdate'>
                       <button 
-                        className="updateCommentButton" 
+                        className="userCommentUpdate-button" 
                         type="submit" 
                         onClick={handleCommentUpdate}
                       >

@@ -1,6 +1,5 @@
 import React from 'react'
 import { POST_ID, POST_IMAGE_URL, USER_ID, USER_IMAGE, USER_NAME, POST_TEXT } from '../constants'
-import "../styles/gallery.css"
 import { useNavigate } from 'react-router-dom'
 
 function Gallery({
@@ -17,7 +16,7 @@ function Gallery({
   return (
     <div className='gallery'>
         {posts.map((post) => (
-            <div className="galleryPostDetails makeWhite" key={post[POST_ID]} onClick={getHandleClick(post[POST_ID])}>
+            <div className="gallery-postDetails makeWhite" key={post[POST_ID]} onClick={getHandleClick(post[POST_ID])}>
                 <div className="postDetails-top">
                 <img className='postDetails-userImage' src={users[post[USER_ID]][USER_IMAGE]} ></img>
                 <div className='postDetails-user'>
