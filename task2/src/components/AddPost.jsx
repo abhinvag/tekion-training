@@ -38,10 +38,10 @@ function AddPost({
             isValid = false;
         }
 
-        if(post[POST_IMAGE_URL].trim().length == 0){
-            tempValidationErrorObj[POST_IMAGE_URL] = "This field cannot be empty !";
-            isValid = false;
-        }
+        // if(post[POST_IMAGE_URL].trim().length == 0){
+        //     tempValidationErrorObj[POST_IMAGE_URL] = "This field cannot be empty !";
+        //     isValid = false;
+        // }
 
         setValidationErrorObj(tempValidationErrorObj)
         

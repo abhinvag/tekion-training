@@ -52,26 +52,28 @@ function CommentSection({
                 </>
             )}
         </a>
-        {showCommentsToggle && (
-            <>
-                {comments.length > 0 ? (
-                    <>
-                    {comments.map((comment) => (
-                        <CommentWithReply 
-                            comment={comment}
-                            updateModal={updateModal}
-                            currCommentID={currCommentID}
-                            currPostID={currPostID}
-                            setCurrCommentID={setCurrCommentID}
-                            key={`commentWithReply-${comment[COMMENT_ID]}`}
-                        />
-                    ))}
-                    </>
-                ):(
-                    <div className='noComments'>No comments yet :-(</div>
-                )}
-            </>
-        )}
+        <div>
+            {showCommentsToggle && (
+                <>
+                    {comments.length > 0 ? (
+                        <>
+                        {comments.map((comment) => (
+                            <CommentWithReply 
+                                comment={comment}
+                                updateModal={updateModal}
+                                currCommentID={currCommentID}
+                                currPostID={currPostID}
+                                setCurrCommentID={setCurrCommentID}
+                                key={`commentWithReply-${comment[COMMENT_ID]}`}
+                            />
+                        ))}
+                        </>
+                    ):(
+                        <div className='noComments'>No comments yet :-(</div>
+                    )}
+                </>
+            )}
+        </div>
         {showModal && (
             <ModalContainer>
                 <DeleteModalContainer

@@ -24,8 +24,10 @@ function Gallery({
                     <p className='postDetails-userID p--gray'>@{users[post[USER_ID]][USER_ID]}</p>
                 </div>
                 </div>
-                <p>{post[POST_TEXT]}</p>
-                <img className="postDetails-postImage" src={post[POST_IMAGE_URL]}></img>
+                <p className='postDetails-postText'> {post[POST_TEXT]}</p>
+                {post[POST_IMAGE_URL] !== "" && (
+                    <img className="postDetails-postImage" src={post[POST_IMAGE_URL]}></img>
+                )}
             </div>
         ))}
     </div>

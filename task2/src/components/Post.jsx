@@ -6,6 +6,8 @@ import { useNavigate } from 'react-router-dom';
 
 function Post({post = {}, user = {}}) {
 
+  console.log(post);
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -25,8 +27,10 @@ function Post({post = {}, user = {}}) {
             <p className='postDetails-userID p--gray'>@{user[USER_ID]}</p>
           </div>
         </div>
-        <p>{post[POST_TEXT]}</p>
-        <img className="postDetails-postImage" src={post?.[POST_IMAGE_URL]}></img>
+        <p className='postDetails-postText'> {post[POST_TEXT]}</p>
+        {post[POST_IMAGE_URL] !== "" && (
+          <img className="postDetails-postImage" src={post?.[POST_IMAGE_URL]}></img>
+        )}
       </div>
       <CommentSection 
         key={`commentSection-${post[POST_ID]}`}
