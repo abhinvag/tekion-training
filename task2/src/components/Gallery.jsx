@@ -1,6 +1,7 @@
 import React from 'react'
-import { POST_ID, POST_IMAGE_URL, USER_ID, USER_IMAGE, USER_NAME, POST_TEXT } from '../constants'
+import { POST_ID, USER_ID } from '../constants'
 import { useNavigate } from 'react-router-dom'
+import { PostDetailsContainer } from '../containers/PostDetailsContainer';
 
 function Gallery({
     posts = [], 
@@ -17,17 +18,10 @@ function Gallery({
     <div className='gallery'>
         {posts.map((post) => (
             <div className="gallery-postDetails makeWhite" key={post[POST_ID]} onClick={getHandleClick(post[POST_ID])}>
-                <div className="postDetails-top">
-                <img className='postDetails-userImage' src={users[post[USER_ID]][USER_IMAGE]} ></img>
-                <div className='postDetails-user'>
-                    <p className='postDetails-userName'>{users[post[USER_ID]][USER_NAME]}</p>
-                    <p className='postDetails-userID p--gray'>@{users[post[USER_ID]][USER_ID]}</p>
-                </div>
-                </div>
-                <p className='postDetails-postText'> {post[POST_TEXT]}</p>
-                {post[POST_IMAGE_URL] !== "" && (
-                    <img className="postDetails-postImage" src={post[POST_IMAGE_URL]}></img>
-                )}
+                <PostDetailsContainer
+                    user={users[post[USER_ID]]}
+                    post={post}
+                />
             </div>
         ))}
     </div>

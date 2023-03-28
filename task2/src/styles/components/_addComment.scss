@@ -4,9 +4,10 @@
     display: flex;
     background-color: $color-white;
     border-radius: 0.8rem;
-    width: 100%;
+    width: 94%;
     padding: 2rem;
     margin-top: 0.8rem;
+    margin-left: 3.2rem;
     
     &Left{
        
@@ -29,6 +30,8 @@
 
 .addReply{
     margin-top: 0.8rem;
+    width: 100%;
+    margin-left: 0;
 }
 
 
@@ -36,6 +39,8 @@
     .addComment{
 
         flex-direction: column;
+        width: 100%;
+        margin-left: 0;
 
         &Left{
             width: 100%;

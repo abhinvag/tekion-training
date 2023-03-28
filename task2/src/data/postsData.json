@@ -4,6 +4,7 @@
         "postImageURL": "https://img.etimg.com/thumb/width-1200,height-900,imgsize-72880,resizemode-1,msid-91945253/industry/services/property-/-cstruction/tech-firm-tekion-leases-over-one-lakh-sqft-office-space-in-bengaluru-in-expansion-bid.jpg",
         "userID": "captainamerica",
         "postText": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras finibus maximus ornare. Sed non accumsan est, ac efficitur nibh. Suspendisse in enim dignissim lorem porta auctor non eu eros. Sed porta libero quis lacinia ultricies. Aliquam nec neque feugiat, auctor purus in, molestie diam.",
+        "postVotes": 5,
         "comments": [
             {
                 "commentID": "sdjcbjsd",
@@ -64,6 +65,7 @@
         "postImageURL": "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2127&q=80",
         "userID": "ironman",
         "postText": "sbdcjwbclawecblae",
+        "postVotes": 3,
         "comments": []
     },
     {
@@ -71,6 +73,7 @@
         "postImageURL": "https://images.unsplash.com/photo-1438449805896-28a666819a20?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
         "userID": "hawkeye",
         "postText": "sbdcjwbclawecblae",
+        "postVotes": 10,
         "comments": []
     },
     {
@@ -78,6 +81,7 @@
         "postImageURL": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YmVhY2h8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=80",
         "userID": "captainamerica",
         "postText": "sbdcjwbclawecblae",
+        "postVotes": 7,
         "comments": []
     },
     {
@@ -85,6 +89,7 @@
         "postImageURL": "https://images.unsplash.com/photo-1488866022504-f2584929ca5f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2062&q=80",
         "userID": "ironman",
         "postText": "sbdcjwbclawecblae",
+        "postVotes": 8,
         "comments": []
     }
 ]

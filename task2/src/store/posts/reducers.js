@@ -1,4 +1,4 @@
-import { COMMENT_ID, POST_COMMENTS, POST_ID, ADD_COMMENT, ADD_POST, ADD_REPLY, INCREMENT_VOTES, VOTES, DECREMENT_VOTES, COMMENT, COMMENT_REPLIES, DELETE_COMMENT, EDIT_COMMENT, USER_COMMENT } from "../../constants";
+import { COMMENT_ID, POST_COMMENTS, POST_ID, ADD_COMMENT, ADD_POST, ADD_REPLY, INCREMENT_VOTES, VOTES, DECREMENT_VOTES, COMMENT, COMMENT_REPLIES, DELETE_COMMENT, EDIT_COMMENT, USER_COMMENT, INCREMENT_POST_VOTES, POST_VOTES, DECREMENT_POST_VOTES } from "../../constants";
 import postsData from "../../data/postsData.json"
 import produce from "immer";
 import { createComment, createPost, findCommentAndReturn } from "../../helper";
@@ -36,6 +36,16 @@ export const postsReducer = produce((state = postsData, action) => {
     if(action.type == DECREMENT_VOTES){
         let comment = findComment(action.payload[COMMENT_ID]);
         comment[VOTES]--;
+    }
+
+    if(action.type == INCREMENT_POST_VOTES){
+        let post = state.find((post) => post[POST_ID] == action.payload[POST_ID]);
+        post[POST_VOTES]++;
+    }
+
+    if(action.type == DECREMENT_POST_VOTES){
+        let post = state.find((post) => post[POST_ID] == action.payload[POST_ID]);
+        post[POST_VOTES]--;
     }
 
     if(action.type == DELETE_COMMENT){

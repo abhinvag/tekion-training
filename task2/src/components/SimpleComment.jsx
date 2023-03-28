@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import {USER_NAME, USER_IMAGE, USER_COMMENT, DATE, COMMENT, VOTES, INCREMENT_VOTES, DECREMENT_VOTES, COMMENT_ID, USER_ID } from '../constants';
 import ReplyButton from './ReplyButton';
 import {AddCommentContainer} from "../containers/AddCommentContainer"
+import UpvoteDownvoteButton from './UpvoteDownvoteButton';
 
 function SimpleComment({
   comment=COMMENT,
@@ -31,13 +32,12 @@ function SimpleComment({
     setShowAddReplyToggle(state);
   }
 
-  const handleIncrementDecrement = (id, type) => () => {
-    if(type == INCREMENT_VOTES){
-      incrementVotes(currPostID, id)
-    }
-    else if(type == DECREMENT_VOTES){
-      decrementVotes(currPostID, id)
-    }
+  const handleIncrement = (commentId) => {
+      incrementVotes(currPostID, commentId)
+  }
+
+  const handleDecrement = (commentId) => {
+    decrementVotes(currPostID, commentId)
   }
 
   const handleDeleteClick = (commentId) => () => {
@@ -58,21 +58,12 @@ function SimpleComment({
   return (
     <div className='comment' id={comment[COMMENT_ID]}>
       <div className='userComment'>
-          <div className='userCommentLeft'>
-            <button
-              className='userCommentLeft-button'
-              onClick={handleIncrementDecrement(comment[COMMENT_ID], INCREMENT_VOTES)}
-            >
-              +
-            </button>
-            <span className='userCommentLeft-span'><b>{comment[VOTES]}</b></span>
-            <button
-              className='userCommentLeft-button'
-              onClick={handleIncrementDecrement(comment[COMMENT_ID], DECREMENT_VOTES)}
-            >
-              -
-            </button>
-          </div>
+          <UpvoteDownvoteButton 
+            handleIncrement={handleIncrement}
+            handleDecrement={handleDecrement}
+            votes={comment[VOTES]}
+            id={comment[COMMENT_ID]}
+          />
           <div className='userCommentRight'>
             <div className="userCommentRightTop">
               <div className='userCommentRightTop-details'>

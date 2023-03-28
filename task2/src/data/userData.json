@@ -2,21 +2,29 @@
     "captainamerica": {
         "userID": "captainamerica",
         "userName": "Steve Rogers",
-        "userImage": "https://media.npr.org/assets/img/2022/11/08/ap22312071681283-0d9c328f69a7c7f15320e8750d6ea447532dff66.jpg"
+        "userImage": "https://media.npr.org/assets/img/2022/11/08/ap22312071681283-0d9c328f69a7c7f15320e8750d6ea447532dff66.jpg",
+        "likedPosts": [],
+        "likedComments": []
     },
     "ironman": {
         "userID": "ironman",
         "userName": "Tony Stark",
-        "userImage": "https://e00-marca.uecdn.es/assets/multimedia/imagenes/2023/01/12/16735402991293.jpg"
+        "userImage": "https://e00-marca.uecdn.es/assets/multimedia/imagenes/2023/01/12/16735402991293.jpg",
+        "likedPosts": [],
+        "likedComments": []
     },
     "hawkeye": {
         "userID": "hawkeye",
         "userName": "Clint Barton",
-        "userImage": "https://media.cnn.com/api/v1/images/stellar/prod/230102115303-digital-jeremy-renner.jpg?c=original"
+        "userImage": "https://media.cnn.com/api/v1/images/stellar/prod/230102115303-digital-jeremy-renner.jpg?c=original",
+        "likedPosts": [],
+        "likedComments": []
     },
     "sherlock": {
         "userID": "sherlock",
         "userName": "Sherlock Holmes",
-        "userImage": "https://pyxis.nymag.com/v1/imgs/f47/788/caac0f6d9bc8edc26a8c8b17d69a41e447-02-sherlock.rsquare.w330.jpg"
+        "userImage": "https://pyxis.nymag.com/v1/imgs/f47/788/caac0f6d9bc8edc26a8c8b17d69a41e447-02-sherlock.rsquare.w330.jpg",
+        "likedPosts": [],
+        "likedComments": []
     }
 }

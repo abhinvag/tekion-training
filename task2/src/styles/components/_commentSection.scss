@@ -1,3 +1,7 @@
+.commentsSection{
+    padding-left: 3.2rem;
+}
+
 .comment{
     margin-top: 2rem;
     width: 100%;
@@ -21,6 +25,7 @@
 }
 
 .showHideCommentsButton{
+    padding-left: 3.2rem;
     margin-top: 0.8rem;
     width: 100%;
     cursor: pointer;
@@ -30,4 +35,14 @@
     color: $color-gray;
     text-align: left;
 }
+
+@media only screen and (max-width: 855px) {
+    .commentsSection{
+        padding-left: 0;
+    }
+    .showHideCommentsButton{
+        padding-left: 0;
+    }
+}
+
 

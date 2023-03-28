@@ -1,4 +1,4 @@
-import { COMMENT_ID, POST_ID, ADD_POST, ADD_COMMENT, ADD_REPLY, INCREMENT_VOTES, DECREMENT_VOTES, DELETE_COMMENT, EDIT_COMMENT, USER_COMMENT } from "../../constants";
+import { COMMENT_ID, POST_ID, ADD_POST, ADD_COMMENT, ADD_REPLY, INCREMENT_VOTES, DECREMENT_VOTES, DELETE_COMMENT, EDIT_COMMENT, USER_COMMENT, INCREMENT_POST_VOTES, DECREMENT_POST_VOTES } from "../../constants";
 
 export const addPost = (post) => {
     return {
@@ -29,7 +29,6 @@ export const addReply = (postId, commentId, reply) => {
 }
 
 export const incrementVotes = (postId, commentId) => {
-    console.log(postId);
     return {
         type: INCREMENT_VOTES,
         payload: {
@@ -45,6 +44,24 @@ export const decrementVotes = (postId, commentId) => {
         payload: {
             [POST_ID]: postId,
             [COMMENT_ID]: commentId
+        }
+    }
+}
+
+export const incrementPostVotes = (postId) => {
+    return {
+        type: INCREMENT_POST_VOTES,
+        payload: {
+            [POST_ID]: postId,
+        }
+    }
+}
+
+export const decrementPostVotes = (postId) => {
+    return {
+        type: DECREMENT_POST_VOTES,
+        payload: {
+            [POST_ID]: postId,
         }
     }
 }

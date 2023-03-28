@@ -52,7 +52,7 @@ function CommentSection({
                 </>
             )}
         </a>
-        <div>
+        <div className='commentsSection'>
             {showCommentsToggle && (
                 <>
                     {comments.length > 0 ? (

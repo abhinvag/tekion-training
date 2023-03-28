@@ -4,35 +4,7 @@
     width: 100%;
     background-color: $color-white;
     border-radius: 0.8rem;
-    padding: 2rem;
-    
-    &Left{
-
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        background-color: $color-primary--light2;
-        margin-right: 0.8rem;
-        padding: 0.2rem;
-        border-radius: 0.8rem;
-        height: 5.2rem;
-        width: 2.4rem;
-
-        &-button{
-            background: transparent;
-            color: $color-primary--light;
-            font-size: 1.2rem;
-            margin-top: 0;
-            transition-duration: 300ms;
-            &:hover{
-                color: $color-primary;
-            }
-        }
-        
-        &-span{
-            color: $color-primary;
-        }
-    }
+    padding: 1.5rem;
     
     &Right{
         width: 94%;
@@ -97,14 +69,6 @@
         &Right{
             width: 100%;
         }
-    
-        &Left{
-            flex-direction: row;
-            margin-top: 0.8rem;
-            height: auto;
-            width: 4.4rem;
-        }
     }
-
 
 }
