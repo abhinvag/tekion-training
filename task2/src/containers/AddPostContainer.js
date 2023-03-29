@@ -1,12 +1,12 @@
 import { connect } from "react-redux"
 import AddPost from "../components/AddPost"
-import { USERS } from "../constants";
+import { CURRENT_USER, USERS } from "../constants";
 import { addPost } from "../store/posts/actions"
 
 const mapStateToProps = (state) => {
-    const users = state[USERS];
+    const currentUser = state[CURRENT_USER];
     return {
-        users
+        currentUser
     }
 }
 

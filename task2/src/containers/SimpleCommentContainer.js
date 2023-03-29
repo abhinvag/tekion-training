@@ -1,12 +1,15 @@
 import { connect } from "react-redux"
 import SimpleComment from "../components/SimpleComment"
+import { CURRENT_USER, USER_ID } from "../constants";
 import { decrementVotes, editComment, incrementVotes } from "../store/posts/actions"
 import { selectUserFromComment } from "../store/users/selector";
 
 const mapStateToProps = (state, props) => {
     const user = selectUserFromComment(state, props);
+    const currUserID = state[CURRENT_USER][USER_ID]
     return {
-        user
+        user,
+        currUserID
     }
 }
 

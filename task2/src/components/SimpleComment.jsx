@@ -13,11 +13,10 @@ function SimpleComment({
   decrementVotes = () => {},
   editCommentRedux = () => {},
   currPostID = "",
+  currUserID = "",
   user = {},
   parentCommentId="root"
 }) {
-
-  const currUserID = "hawkeye"; 
 
   const [editComment, setEditComment] = useState(false)
   const [newComment, setNewComment] = useState();

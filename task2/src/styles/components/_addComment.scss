@@ -5,26 +5,30 @@
     background-color: $color-white;
     border-radius: 0.8rem;
     width: 94%;
-    padding: 2rem;
+    padding: 1.5rem;
     margin-top: 0.8rem;
     margin-left: 3.2rem;
-    
-    &Left{
-       
+
+    &-left{
+        display: flex;
         width: 85%;
-        
-        &-input{
-            width: 100%;
-        }
-        
-        &-textarea{
-            width: 100% !important;
-        }
+    }
+
+    &-image{
+        border-radius: 100%;
+        width: 2.4rem;
+        height: 2.4rem;
+        position: relative;
+        margin-right: 0.8rem;
     }
     
-    &Right{
-        width: 15%;
-        text-align: center;
+    &-textarea{
+        margin-top: 0;
+        width: 100%;
+    }
+
+    &-button{
+        width: 15%
     }
 }
 
@@ -37,18 +41,24 @@
 
 @media only screen and (max-width: 855px) {
     .addComment{
-
         flex-direction: column;
         width: 100%;
         margin-left: 0;
-
-        &Left{
+        &-left{
             width: 100%;
+            margin-bottom: 0.4rem;
         }
-        
-        &Right{
+        &-image{
+            position: absolute;
+        }
+        &-textarea{
+            flex-grow: 100;
+            margin-left: 3.2rem;
+        }
+        &-button{
             width: 100%;
-            text-align: right;
+            display: flex;
+            justify-content: end;
         }
     }
 

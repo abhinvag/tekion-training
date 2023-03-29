@@ -53,4 +53,5 @@ export const EDIT_COMMENT = "EDIT_COMMENT";
 export const CURR_POST_ID = "currPostID";
 export const POSTS = "posts";
 export const USERS = "users";
+export const CURRENT_USER = "currentUser"
 export const MONTHS_ARRAY = ["Jan","Feb","March","April","May","June","July","Aug","Sept","Oct","Nov","Dec"];
