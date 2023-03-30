@@ -1,18 +1,25 @@
 import React from 'react'
 
+type UpvoteDownvoteButtonProps = {
+    handleIncrement: (commentId: string) => void;
+    handleDecrement: (commentId: string) => void;
+    votes: React.ReactNode;
+    id: string | undefined
+}
+
 function UpvoteDownvoteButton({
     handleIncrement = () => {},
     handleDecrement = () => {},
     votes = 0,
     id = ""
-}) {
+}:UpvoteDownvoteButtonProps) {
 
-    const handleIncrementClick = (event) => {
+    const handleIncrementClick = (event:React.MouseEvent<HTMLElement>) => {
         event.stopPropagation();
         handleIncrement(id)
     }
 
-    const handleDecrementClick = (event) => {
+    const handleDecrementClick = (event:React.MouseEvent<HTMLElement>) => {
         event.stopPropagation();
         handleDecrement(id);
     }

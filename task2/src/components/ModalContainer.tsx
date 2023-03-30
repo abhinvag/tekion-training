@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { PropsWithChildren } from 'react'
 
-function ModalContainer(props) {
+function ModalContainer({children}:PropsWithChildren) {
   return (
     <div 
         style={{
@@ -16,7 +16,7 @@ function ModalContainer(props) {
             "zIndex": "5"
         }}
     >
-        {props.children}
+        {children}
     </div>
   )
 }

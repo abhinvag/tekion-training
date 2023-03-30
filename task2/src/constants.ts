@@ -1,5 +1,7 @@
 // USER
 
+import { Comment, Post } from "./types";
+
 export const USER_ID = "userID";
 export const USER_NAME = "userName";
 export const USER_IMAGE = "userImage";
@@ -12,12 +14,15 @@ export const DATE = "date";
 export const COMMENT_REPLIES = "commentReplies";
 export const VOTES = "votes";
 
-export const COMMENT = {}
-COMMENT[COMMENT_ID] = "";
-COMMENT[USER_ID] = "";
-COMMENT[USER_COMMENT] = "";
-COMMENT[DATE] = "";
-COMMENT[COMMENT_REPLIES] = []
+export const COMMENT : Comment = {
+    commentID: "",
+    userID: "",
+    userComment: "",
+    date: "",
+    commentReplies: [],
+    votes: 0
+}
+
 
 // POST
 
@@ -27,15 +32,17 @@ export const POST_COMMENTS = "comments";
 export const POST_TEXT = "postText";
 export const POST_VOTES = "postVotes";
 
-export const POST = {};
-POST[POST_ID] = "";
-POST[POST_IMAGE_URL] = "";
-POST[USER_ID] = "";
-POST[POST_COMMENTS] = [];
-POST[POST_TEXT] = "";
-POST[POST_VOTES] = 0;
+export const POST:Post = {
+    postID: "",
+    userID: "",
+    postImageURL: "",
+    comments: [],
+    postText: "",
+    postVotes: 0
+};
 
-// ACTIONS
+
+// REDUX
 
 export const ADD_POST = "ADD_POST";
 export const ADD_COMMENT = "ADD_COMMENT"

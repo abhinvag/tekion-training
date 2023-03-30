@@ -4,15 +4,16 @@ import { POST_COMMENTS, USER_ID, POST_ID } from '../constants';
 import { AddCommentContainer } from '../containers/AddCommentContainer';
 import { useNavigate } from 'react-router-dom';
 import { PostDetailsContainer } from '../containers/PostDetailsContainer';
+import { PostContainerReduxProps } from '../containers/PostContainer';
 
-function Post({post = {}, user = {}}) {
+function Post({post, user}:PostContainerReduxProps) {
 
   console.log(post);
 
   const navigate = useNavigate();
 
   useEffect(() => {
-    if(post[POST_ID] == undefined || user[USER_ID] == undefined){
+    if(post == undefined || post[POST_ID] == undefined || user == undefined || user[USER_ID] == undefined){
       navigate("/404");
     }
   }, [])

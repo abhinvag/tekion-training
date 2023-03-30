@@ -1,10 +1,10 @@
 import {createSelector} from "reselect";
 import { POSTS, POST_ID } from "../../constants";
-import { getPostIdFromURL } from "../../helper";
+import { RootState } from "../../store";
 
-export const selectPosts = (state) => state[POSTS];
+export const selectPosts = (state:RootState) => state[POSTS];
 
-export const selectCurrentPostId = (state, postId) => {
+export const selectCurrentPostId = (state:RootState, postId:string) => {
     return postId;
 }
 

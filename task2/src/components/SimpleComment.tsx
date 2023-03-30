@@ -3,48 +3,62 @@ import {USER_NAME, USER_IMAGE, USER_COMMENT, DATE, COMMENT, VOTES, INCREMENT_VOT
 import ReplyButton from './ReplyButton';
 import {AddCommentContainer} from "../containers/AddCommentContainer"
 import UpvoteDownvoteButton from './UpvoteDownvoteButton';
+import { Comment, User } from '../types';
+import { SimpleCommentContainerPropsFromRedux } from '../containers/SimpleCommentContainer';
+
+type Props = {
+  comment: Comment;
+  setCurrCommentID: React.Dispatch<React.SetStateAction<{}>>;
+  commentAuthor:string;
+  updateModal: () => void;
+  currPostID: string;
+  user: User;
+  parentCommentId: string;
+}
+
+type SimpleCommentProps = Props & SimpleCommentContainerPropsFromRedux
 
 function SimpleComment({
-  comment=COMMENT,
+  comment,
   setCurrCommentID = () => {},
-  commentAuthor="",
+  commentAuthor = "",
   updateModal = () => {},
   incrementVotes = () => {},
   decrementVotes = () => {},
   editCommentRedux = () => {},
   currPostID = "",
   currUserID = "",
-  user = {},
+  user,
   parentCommentId="root"
-}) {
+}:SimpleCommentProps) {
 
   const [editComment, setEditComment] = useState(false)
-  const [newComment, setNewComment] = useState();
+  const [newComment, setNewComment] = useState<string>("");
   const [showAddReplyToggle, setShowAddReplyToggle] = useState(false);
 
-  const updateEditComment = (comment) => () => {
+  const updateEditComment = (comment: string) => () => {
     setEditComment(!editComment);
     setNewComment(comment)
   }
 
-  const updateShowAddReplyToggle = (state) => {
+  const updateShowAddReplyToggle = (state:boolean) => {
     setShowAddReplyToggle(state);
   }
 
-  const handleIncrement = (commentId) => {
+  const handleIncrement = (commentId:string) => {
       incrementVotes(currPostID, commentId)
   }
 
-  const handleDecrement = (commentId) => {
+  const handleDecrement = (commentId:string) => {
     decrementVotes(currPostID, commentId)
   }
 
-  const handleDeleteClick = (commentId) => () => {
+  const handleDeleteClick = (commentId:string) => () => {
     updateModal();
     setCurrCommentID({parentCommentId, [COMMENT_ID]: commentId});
   }
 
-  const handleNewCommentEdit = (e) => {
+  const handleNewCommentEdit = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setNewComment(e.target.value);
   }
 
@@ -106,7 +120,8 @@ function SimpleComment({
                   <div className='updateCommentDiv'> 
                     <textarea 
                       id="userComment" 
-                      rows="4" cols="50" 
+                      rows={4} 
+                      cols={50} 
                       value={newComment}
                       className="updateCommentTextarea"
                       onChange={handleNewCommentEdit}

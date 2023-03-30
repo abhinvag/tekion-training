@@ -1,10 +1,11 @@
 import React, {useState, useEffect} from 'react';
 import {POST_IMAGE_URL, POST, USER_ID, POST_TEXT} from '../constants';
+import { AddPostContainerReduxProps } from '../containers/AddPostContainer';
 
 function AddPost({
     addPost = () => {},
-    currentUser = {}
-}) {
+    currentUser
+}:AddPostContainerReduxProps) {
 
     const [post, setPost] = useState(POST);
     const [shareDisabled, setShareDisabled] = useState(true);
@@ -22,7 +23,7 @@ function AddPost({
         }
     }, [post])
 
-    const updatePost = (e) => {
+    const updatePost = (e:React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const {name, value} = e.target;
         setPost((prevValue) => {
             return {
@@ -49,7 +50,8 @@ function AddPost({
             />
         </div>
         <textarea  
-            rows="4" cols="50" 
+            rows={4} 
+            cols={50} 
             placeholder="Add some text .." 
             name={POST_TEXT} 
             value={post[POST_TEXT]}

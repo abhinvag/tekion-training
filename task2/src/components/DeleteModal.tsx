@@ -1,13 +1,21 @@
 import React from 'react'
 import { COMMENT_ID } from '../constants';
+import { DeleteModalContainerReduxProps } from '../containers/DeleteModalContainer';
 
+type Props = {
+    updateModal: () => void;
+    currCommentID: {parentCommentId:string, commentID:string};
+    currPostID:string | undefined
+}
+
+type DeleteModalProps = Props & DeleteModalContainerReduxProps
 
 function DeleteModal({
     updateModal = () => {},
-    currCommentID="",
+    currCommentID,
     currPostID = "",
     deleteComment = () => {}
-}) {
+}:DeleteModalProps) {
 
     const handleDelete = () => {
         deleteComment(currPostID, currCommentID.parentCommentId, currCommentID[COMMENT_ID]);

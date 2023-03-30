@@ -1,9 +1,14 @@
 import React from 'react'
 
+type ReplyButtonProps = {
+  updateShowAddReplyToggle: (state: boolean) => void;
+  showAddReplyToggle: boolean
+}
+
 function ReplyButton({
   updateShowAddReplyToggle = () => {}, 
   showAddReplyToggle=false,
-}) {
+}:ReplyButtonProps) {
 
     const handleClick = () => {
         updateShowAddReplyToggle(!showAddReplyToggle)

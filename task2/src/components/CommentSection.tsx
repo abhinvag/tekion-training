@@ -4,18 +4,27 @@ import {COMMENT_ID} from '../constants';
 import ModalContainer from './ModalContainer';
 import {DeleteModalContainer} from "../containers/DeleteModalContainer"
 import { useParams } from 'react-router-dom';
+import { Comment } from '../types';
+
+type CommentSectionProps = {
+    comments: Comment[] | undefined;
+    currPostID: string | undefined
+}
 
 function CommentSection({
-    comments=[],
-    currPostID=""
-}) {
+    comments,
+    currPostID
+}:CommentSectionProps) {
 
     const params = useParams();
 
     const [showCommentsToggle, setShowCommentsToggle] = useState(true);
     
     const [showModal, setShowModal] = useState(false);
-    const [currCommentID, setCurrCommentID] = useState();
+    const [currCommentID, setCurrCommentID] = useState<{parentCommentId: string, commentID:string}>({
+        parentCommentId: "",
+        commentID: ""
+    });
 
     const updateShowCommentsToggle = () => {
         setShowCommentsToggle(!showCommentsToggle);
@@ -27,7 +36,8 @@ function CommentSection({
     
     useEffect(() => {
       const commentId = params.commentId;
-      const commentElement = document.getElementById(commentId);
+      let commentElement = null;
+      if(commentId != undefined) commentElement = document.getElementById(commentId);
       if(commentElement != null){
         commentElement.scrollIntoView({ behavior: 'smooth', block: "center" });
       }else{
@@ -55,7 +65,7 @@ function CommentSection({
         <div className='commentsSection'>
             {showCommentsToggle && (
                 <>
-                    {comments.length > 0 ? (
+                    {comments !== undefined && comments.length > 0 ? (
                         <>
                         {comments.map((comment) => (
                             <CommentWithReply 

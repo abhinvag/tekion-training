@@ -1,16 +1,30 @@
 import React from 'react'
 import {COMMENT_ID, COMMENT, COMMENT_REPLIES, USER_NAME, USER_ID} from '../constants';
 import { SimpleCommentContainer } from '../containers/SimpleCommentContainer';
+import { Comment } from '../types';
+
+type CommentWithReplyProps = {
+    comment: Comment;
+    commentAuthor: string;
+    updateModal: () => void
+    currCommentID : {parentCommentId:string, commentID:string};
+    currPostID : string | undefined;
+    setCurrCommentID: React.Dispatch<React.SetStateAction<{
+        parentCommentId: string;
+        commentID: string;
+    }>>;
+    parentCommentId:string
+}
 
 function CommentWithReply({
     comment=COMMENT,
-    commentAuthor="",
-    updateModal = () => {},
-    currCommentID="",
-    currPostID="",
-    setCurrCommentID = () => {},
+    commentAuthor,
+    updateModal,
+    currCommentID,
+    currPostID,
+    setCurrCommentID,
     parentCommentId="root"
-}) {
+}:CommentWithReplyProps) {
 
   return (
     <>
